@@ -1,9 +1,10 @@
 body {
-    background-color: aquamarine;
+    background-color: rgb(180, 251, 227);
     margin: 0;
 }
 #header, #footer {
     background-color: #373737;
     min-height: 100px;
     margin: 0;
+    width: 100%;
 }
