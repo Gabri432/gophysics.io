@@ -26,7 +26,15 @@ func main() {
 	http.HandleFunc("/about", about)
 	http.HandleFunc("/contact", contact)
 	http.HandleFunc("/docs", docs)
-	log.Fatal(http.ListenAndServe("https://gabri432.github.io/gophysics.io/", nil))
+	log.Fatal(http.ListenAndServe("https://gabri432.github.io/gophysics.io/", mux))
+}
+
+func (m multiplexer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if handler, ok := m[r.RequestURI]; ok {
+		handler.ServeHTTP(w, r)
+	} else {
+		w.WriteHeader(http.StatusNotFound)
+	}
 }
 
 func (wP WebPage) ServeHTTP(w http.ResponseWriter, r *http.Request) {
