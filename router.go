@@ -53,7 +53,7 @@ func (wP WebPage) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
-	myTemplates := []string{"templates/index.html", "templates/header.html", "templates/footer.html"}
+	myTemplates := []string{"index.html", "templates/header.html", "templates/footer.html"}
 	htmlPage, err := template.ParseFiles(myTemplates...)
 	if err != nil {
 	}
