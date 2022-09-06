@@ -48,3 +48,12 @@ code {
     padding: 1%;
     text-align: left;
 }
+.codes {
+    color: white;
+}
+.imports {
+    color: rgb(131, 60, 60);
+}
+.func {
+    color: blue;
+}
