@@ -11,9 +11,11 @@ body {
     font-weight: bold;
     padding: 2%;
     text-align: center;
+}
+#header {
     word-spacing: 10px;
 }
-footer {
+#footer {
     min-height: 100px;
 }
 nav {
