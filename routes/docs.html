@@ -26,46 +26,7 @@
                     <li><a href="#formulas">List of constants</a></li>
                 </ul>
             </nav>
-        <br />
-        <pre>
-            <code>
-                    import (
-                    <span class="imports">
-                        "fmt"
-                        "github.com/Gabri432/gophysics/constants"
-                        "github.com/Gabri432/gophysics/formulas"
-                    </span>
-                    )
-    
-                    <span class="func">
-                    func</span> <span class="func-name">main</span>() {
-                    <span class="codes">
-                        fmt.Println(constants.C)</span> // Write a constant
-                    <span class="codes">
-                        fmt.Println(formulas.<span class="func-name">Force</span>(3, 4))</span> // Call a function
-                    
-                    }
-            </code>
-        </pre>
-        <br />
-            <h3>Example of using methods</h3>
-        <pre>
-            <code>
-                <span class="func">
-                    func</span> <span class="func-name">main</span>() {
-                        // Create a custom object
-                    <span class="codes">
-                        myPlanet := formulas.PlanetBody{}
-                        myPlanet.Mass = constants.EARTH_MASS
-                        myPlanet.Radius = constants.EARTH_RADIUS
-                    </span>
-                        // Call object methods to ease calculations
-                    <span class="codes">
-                        fmt.Println(myPlanet.<span class="func-name">EscapeSpeed</span>())
-                    </span>
-                    }
-            </code>
-        </pre>
+            <div id="functionsList"></div>
         </div>
     </div>  
 <div id="footer">
