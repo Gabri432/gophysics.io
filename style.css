@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(180, 251, 227);
+    background-color: rgb(225, 249, 241);
     margin: 0;
     font-family: 'Trebuchet MS', sans-serif, 'system-ui';
 }
@@ -19,8 +19,14 @@ a {
 }
 #page-title {
     text-align: center;
+    font-size: x-large;
+}
+#main {
+    width: 76%;
+    margin-left: 10%;
+    padding: 2%;
 }
 code {
-    background-color: #f1f1f1;
-    color: crimson
+    background-color: #373737;
+    color: greenyellow;
 }
