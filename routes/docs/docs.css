@@ -39,7 +39,7 @@ a {
     padding-left: 15%;
     font-size: 22px;
 }
-pre {
+.function-displayer {
     background-color: #373737;
     border-radius: 5px;
     font-size: 16px;
