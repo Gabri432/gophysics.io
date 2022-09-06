@@ -21,20 +21,22 @@
     <div id="main">
         <p>The gophysics is a library written in the powerful Go programming language that provides a set of functions and constants to make Physics calculations.</p> 
         <h3>Example</h3>
-        <code>
-            import (
-                "fmt"
-                "github.com/Gabri432/gophysics/constants"
-                "github.com/Gabri432/gophysics/formulas"
-            )
-
-            func main() {
-                fmt.Println(constants.C)   // Write a constant
-                fmt.Println(formulas.Force(3, 4))   // Call a function
-                myPlanet := formulas.PlanetBody{Mass: constants.EARTH_MASS, Radius: constants.EARTH_RADIUS} // Create a custom object
-	            fmt.Println(myPlanet.EscapeSpeed())  // Call object methods to ease some calculations
-            }
-        </code>
+        <pre>
+            <code>
+                import (
+                    "fmt"
+                    "github.com/Gabri432/gophysics/constants"
+                    "github.com/Gabri432/gophysics/formulas"
+                )
+    
+                func main() {
+                    fmt.Println(constants.C)   // Write a constant
+                    fmt.Println(formulas.Force(3, 4))   // Call a function
+                    myPlanet := formulas.PlanetBody{Mass: constants.EARTH_MASS, Radius: constants.EARTH_RADIUS} // Create a custom object
+                    fmt.Println(myPlanet.EscapeSpeed())  // Call object methods to ease some calculations
+                }
+            </code>
+        </pre>
     </div>  
     <div id="footer">
         <nav>
