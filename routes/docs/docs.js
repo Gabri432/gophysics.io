@@ -78,7 +78,7 @@ window.onload = () => loadFormulas()
 function loadFormulas() {
     var documentationHtml = document.getElementById("functionsListHtml");
     for (var i=0; i<functionsList.length; i++) {
-        documentationHtml.innerHTML += "<div class='function-displayer'><h2>" + functionsList[i].name + "</h2><br/>" + 
+        documentationHtml.innerHTML += "<div class='function-displayer'><span class='function-name'>" + functionsList[i].name + "</span><br/>" + 
         functionsList[i].description + "</div>";
     }
 }
