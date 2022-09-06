@@ -25,43 +25,43 @@
         <br />
         <pre>
             <code>
-                import (
+                    import (
                     <span class="imports">
-                    "fmt"
-                    "github.com/Gabri432/gophysics/constants"
-                    "github.com/Gabri432/gophysics/formulas"
-                   </span>
-                )
+                        "fmt"
+                        "github.com/Gabri432/gophysics/constants"
+                        "github.com/Gabri432/gophysics/formulas"
+                    </span>
+                    )
     
-                <span class="func">
+                    <span class="func">
                     func</span> main() {
                     <span class="codes">
                         fmt.Println(constants.C)
-                    </span>
-                       // Write a constant
+                    </span> // Write a constant
                     <span class="codes">
                         fmt.Println(formulas.Force(3, 4))
-                    </span>
-                       // Call a function
+                    </span> // Call a function
                     
-                }
+                    }
             </code>
         </pre>
         <br />
-            <h2>Example of using methods</h2>
+            <h3>Example of using methods</h3>
         <pre>
             <code>
                 <span class="func">
                     func</span> main() {
                         // Create a custom object
                     <span class="codes">
-                        myPlanet := formulas.PlanetBody{Mass: constants.EARTH_MASS, Radius: constants.EARTH_RADIUS}
+                        myPlanet := formulas.PlanetBody{}
+                        myPlanet.Mass = constants.EARTH_MASS
+                        myPlanet.Radius = constants.EARTH_RADIUS
                     </span>
                         // Call object methods to ease some calculations
                     <span class="codes">
                         fmt.Println(myPlanet.EscapeSpeed())
                     </span>
-                }
+                    }
             </code>
         </pre>
         </div>
