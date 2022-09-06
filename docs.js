@@ -73,7 +73,7 @@ const functionsList = [Acceleration, AngularFreq, CentripetalAccel, CentripetalF
     RelativTime, Resistance, Time, Voltage, Work
 ]
 
-
+window.onload = () => loadFormulas()
 
 function loadFormulas() {
     //var documentationHtml = document.getElementById("functionsListHtml");
