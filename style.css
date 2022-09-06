@@ -44,11 +44,12 @@ pre {
     background-color: #373737;
     border-radius: 5px;
     font-size: 16px;
+    padding: 2%;
 }
 code {
     color: greenyellow;
-    padding: 1%;
     text-align: left;
+    white-space: pre-line;
 }
 .codes {
     color: white;
@@ -61,4 +62,14 @@ code {
 }
 .func-name {
     color: yellow;
+}
+@media only screen and (max-width: 900px){
+    pre {
+        font-size: 12px;
+    }
+    #main {
+        width: 80%;
+        padding: 2%;
+        margin-left: 9%;
+    }
 }
