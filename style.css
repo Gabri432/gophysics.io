@@ -13,6 +13,9 @@ body {
     padding: 2%;
     text-align: center;
 }
+#header {
+    word-spacing: 10px;
+}
 a {
     color: white;
     text-decoration: none;
@@ -27,8 +30,8 @@ a {
     padding: 2%;
 }
 .text {
-    width: 80%;
-    margin-left: 10%;
+    width: 70%;
+    margin-left: 15%;
 }
 pre {
     background-color: #373737;

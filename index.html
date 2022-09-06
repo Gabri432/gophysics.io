@@ -34,8 +34,20 @@
                 func main() {
                     fmt.Println(constants.C)   // Write a constant
                     fmt.Println(formulas.Force(3, 4))   // Call a function
-                    myPlanet := formulas.PlanetBody{Mass: constants.EARTH_MASS, Radius: constants.EARTH_RADIUS} // Create a custom object
-                    fmt.Println(myPlanet.EscapeSpeed())  // Call object methods to ease some calculations
+                    
+                }
+            </code>
+        </pre>
+        <div class="text">
+            <h2>Example of using methods</h2>
+        </div>
+        <pre>
+            <code>
+                func main() {
+                    // Create a custom object
+                    myPlanet := formulas.PlanetBody{Mass: constants.EARTH_MASS, Radius: constants.EARTH_RADIUS}
+                    // Call object methods to ease some calculations
+                    fmt.Println(myPlanet.EscapeSpeed())
                 }
             </code>
         </pre>
