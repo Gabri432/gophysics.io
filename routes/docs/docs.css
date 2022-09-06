@@ -62,14 +62,6 @@ code {
 .func-name {
     color: yellow;
 }
-.function-displayer {
-    background-color: rgb(240, 236, 236);
-    border-radius: 2px;
-    padding: 1%;
-}
-.function-name {
-    color: blue;
-}
 @media only screen and (max-width: 900px){
     pre {
         font-size: 12px;
