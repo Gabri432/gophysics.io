@@ -76,8 +76,9 @@ const functionsList = [Acceleration, AngularFreq, CentripetalAccel, CentripetalF
 window.onload = () => loadFormulas()
 
 function loadFormulas() {
-    //var documentationHtml = document.getElementById("functionsListHtml");
+    var documentationHtml = document.getElementById("functionsListHtml");
     for (var i=0; i<functionsList.length; i++) {
-        console.log(functionsList[i]);
+        documentationHtml.innerHTML += "<div class='function-displayer'><h2>" + functionsList[i].name + "</h2><br/>" + 
+        functionsList[i].description + "</div>";
     }
 }

@@ -63,6 +63,9 @@ code {
 .func-name {
     color: yellow;
 }
+.function-displayer {
+    background-color: lightgrey;
+}
 @media only screen and (max-width: 900px){
     pre {
         font-size: 12px;
