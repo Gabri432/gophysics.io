@@ -29,10 +29,10 @@ const Frequency = new Formula("func Frequency(speed, distance float64) (value fl
 const GaussFlux = new Formula("func GaussFlux(charge float64) (value float64, measurementUnit string)", "charge / Vacuum Premittivity constant", "N*m^2/C")
 const GravAttract = new Formula("func GravAttract(mass1, mass2, distance float64) (value float64, measurementUnit string)", "(G * mass1 * mass2) / (distance^2)", "m/s^2")
 const GravField = new Formula("func GravField(mass, distance float64) (value float64, measurementUnit string)", "(constants.G * mass) / (distance^2)", "m/s^2")
-const HeatFlux = new Formula("func HeatFlux(thermalConductivityConstant, startingTemperatureKelvin, finalTemperatureKelvin, distance float64) (value float64, measurementUnit string)", "", "")
+const HeatFlux = new Formula("func HeatFlux(thermalConductivityConstant, startingTemperatureKelvin, finalTemperatureKelvin, distance float64) (value float64, measurementUnit string)", "-1 * thermalConductivityConstant * (finalTemperatureKelvin - startingTemperatureKelvin) / distance", "W")
 const Intensity = new Formula("func Intensity(power, area float64) (value float64, measurementUnit string)", "power/area", "W/m^2")
 // Making some space
-const JouleHeating = new Formula("func JouleHeating(resistance, currentIntensity float64) (power float64, measurementUnit string)", "", "")
+const JouleHeating = new Formula("func JouleHeating(resistance, currentIntensity float64) (power float64, measurementUnit string)", "resistance * (currentIntensity * currentIntensity)", "W")
 const KineticEner = new Formula("func KineticEner(mass, speed float64) (value float64, measurementUnit string)", "(1 / 2) * mass * (speed * speed)", "J")
 const LawCoulomb = new Formula("func LawCoulomb(charge1, charge2, distance float64) (electroStaticForce float64, measurementUnit string)", "COULOMB constant * (|charge1| * |charge2|) / (distance^2)", "N")
 const LawGayLussacPressure = new Formula("func LawGayLussacPressure(pressure, celsiusDeg_Temperature float64) (value float64, measurementUnit string)", "pressure * (1 + (1/273)*(celsiusDeg_Temperature))", "Pascal")
@@ -57,7 +57,7 @@ const PotentialGravEner = new Formula("func PotentialGravEner(mass, height float
 const PotentialGravEner2 = new Formula("func PotentialGravEner2(mass1, mass2, distance float64) (value float64, measurementUnit string)", "-1 * ((constants.G * mass1 * mass2) / (distance))", "J")
 const Power = new Formula("func Power(work, time float64) (value float64, measurementUnit string)", "work / time", "W")
 // Making some space
-const Pressure = new Formula("func Pressure(normalForce, area float64) (value float64, measurementUnit string)", "", "")
+const Pressure = new Formula("func Pressure(normalForce, area float64) (value float64, measurementUnit string)", "normalForce / area", "Pascal")
 const ProjectileFlightTime = new Formula("func ProjectileFlightTime(initialVelocity, angleInDeg float64) (time float64, measurementUnit string)", "2 * initialVelocity * Sine(angleInDeg/1 radiant)", "s")
 const ProjectileMaxHeight = new Formula("func ProjectileMaxHeight(initialVelocity, angleInDeg float64) (height float64, measurementUnit string)", "(initialVelocity^2 * SineSquare(angleInDeg/1 radiant)) / (2 * G)", "m")
 const ProjectileMaxRange = new Formula("func ProjectileMaxRange(initialVelocity, angleInDeg float64) (length float64, measurementUnit string)", "(initialVelocity^2 * SineSquare(angleInDeg/1 radiant))", "m")
@@ -65,7 +65,7 @@ const RelativDist = new Formula("func RelativDist(nonTravelerDistance, speed flo
 const RelativMass = new Formula("func RelativMass(travelerMass, speed float64) (relativisticMass float64, measurementUnit string)", "mass*Y (Y=Lorentz factor)", "kg")
 const RelativMomentum = new Formula("func RelativMomentum(travelerMomentum, speed float64) (relativisticMomentum float64, measurementUnit string)", "(travelerMomentum * speed)*Y (Y=Lorentz factor)", "kg*m/s")
 const RelativTime = new Formula("func RelativTime(travelerTime, speed float64) (movingObserverTime float64, measurementUnit string)", "travelerTime/Y (Y=Lorentz factor)", "s")
-const Resistance = new Formula("func Resistance(resistance, currentIntensity float64) (power float64, measurementUnit string)", "", "")
+const Resistance = new Formula("func Resistance(resistance, currentIntensity float64) (power float64, measurementUnit string)", "see 'JouleHeating'", "W")
 // Making some space
 const SelfCapacitance = new Formula("func SelfCapacitance(charge, potential float64) (coulombPotential float64, measurementUnit string)", "charge/potential", "C/V")
 const SelfCapacitanceSphere = new Formula("func SelfCapacitanceSphere(radius float64) (coulombPotential float64, measurementUnit string)", "4 * greekPi * Vacuum Premittivity constant * radius", "C/V")
