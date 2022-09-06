@@ -7,11 +7,16 @@ body {
     background-color: #373737;
     min-height: 100px;
     margin: 0;
-    width: 100%;
+    width: 96%;
     color: white;
     font-weight: bold;
+    padding: 2%;
+    text-align: center;
 }
 a {
     color: white;
     text-decoration: none;
+}
+#title {
+    text-align: center;
 }
