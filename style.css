@@ -4,7 +4,7 @@ body {
     font-family: 'Trebuchet MS', sans-serif, 'system-ui';
 }
 #header, #footer {
-    background-color: #373737;
+    background-color: #262626;
     min-height: 100px;
     margin: 0;
     width: 96%;
@@ -35,8 +35,8 @@ a {
 }
 pre {
     background-color: #373737;
-    width: 90%;
-    margin-left: 5%;
+    width: 80%;
+    margin-left: 10%;
     border-radius: 5px;
 }
 code {
