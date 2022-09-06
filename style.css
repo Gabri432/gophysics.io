@@ -54,8 +54,11 @@ code {
     color: white;
 }
 .imports {
-    color: rgb(131, 60, 60);
+    color: rgb(151, 78, 78);
 }
 .func {
     color: blue;
+}
+.func-name {
+    color: yellow;
 }
