@@ -69,6 +69,8 @@ const functionsList = [
 
 
 function loadFormulas() {
-    var documentationHtml = document.getElementById("");
-    for (var i=0; i<functionsList.length; i++) {}
+    //var documentationHtml = document.getElementById("functionsListHtml");
+    for (var i=0; i<functionsList.length; i++) {
+        console.log(functionsList[i]);
+    }
 }
