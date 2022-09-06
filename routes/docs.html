@@ -15,7 +15,53 @@
             <a href="https://github.com/Gabri432/gophysics">View on Github</a>
         </nav>
     </div>
-<h2 id="page-title">Docs!</h2>
+    <div id="main">
+        <h2 id="page-title">Documentation of the gophysics-library v0.15.0</h2>
+        <div class="text">
+            <p>The gophysics library provides a set of functions and constants to make Physics calculations.</p> 
+            <h3>Example</h3>
+        <br />
+        <pre>
+            <code>
+                    import (
+                    <span class="imports">
+                        "fmt"
+                        "github.com/Gabri432/gophysics/constants"
+                        "github.com/Gabri432/gophysics/formulas"
+                    </span>
+                    )
+    
+                    <span class="func">
+                    func</span> <span class="func-name">main</span>() {
+                    <span class="codes">
+                        fmt.Println(constants.C)</span> // Write a constant
+                    <span class="codes">
+                        fmt.Println(formulas.<span class="func-name">Force</span>(3, 4))</span> // Call a function
+                    
+                    }
+            </code>
+        </pre>
+        <br />
+            <h3>Example of using methods</h3>
+        <pre>
+            <code>
+                <span class="func">
+                    func</span> <span class="func-name">main</span>() {
+                        // Create a custom object
+                    <span class="codes">
+                        myPlanet := formulas.PlanetBody{}
+                        myPlanet.Mass = constants.EARTH_MASS
+                        myPlanet.Radius = constants.EARTH_RADIUS
+                    </span>
+                        // Call object methods to ease calculations
+                    <span class="codes">
+                        fmt.Println(myPlanet.<span class="func-name">EscapeSpeed</span>())
+                    </span>
+                    }
+            </code>
+        </pre>
+        </div>
+    </div>  
 <div id="footer">
     <nav>
         <a href="https://gabri432.github.io/gophysics.io/docs">Documentation</a> |
