@@ -53,6 +53,9 @@ a {
 .func-name {
     color: yellow;
 }
+.codes {
+    font-size: 16px;
+}
 
 @media only screen and (max-width: 900px){
     #main {
