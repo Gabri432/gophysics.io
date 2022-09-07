@@ -47,14 +47,6 @@ a {
     font-size: 16px;
     padding: 2%;
 }
-code {
-    color: greenyellow;
-    text-align: left;
-    white-space: pre-line;
-}
-.imports {
-    color: rgb(151, 78, 78);
-}
 .func {
     color: blue;
 }
@@ -63,9 +55,6 @@ code {
 }
 
 @media only screen and (max-width: 900px){
-    pre {
-        font-size: 12px;
-    }
     #main {
         width: 80%;
         padding: 2%;
