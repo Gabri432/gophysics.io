@@ -89,7 +89,7 @@ function loadFormulas() {
     var documentationHtml = document.getElementById("functionsListHtml");
     for (var i=0; i<functionsList.length; i++) {
         documentationHtml.innerHTML += "<div class='func'><div class='function-displayer'>" + functionsList[i].name + 
-        "</div><br/><br /><span class='codes'>Formula: " + functionsList[i].formula + 
+        "</div><br/><span class='codes'>Formula: " + functionsList[i].formula + 
         "<br />Measurement Unit: " + functionsList[i].measurementUnit + "</span></div><br />";
     }
 }
