@@ -48,7 +48,8 @@ a {
     padding: 2%;
 }
 .func {
-    color: blue;
+    border: 1px solid #373737;
+    border-radius: 5px;
 }
 .func-name {
     color: yellow;
