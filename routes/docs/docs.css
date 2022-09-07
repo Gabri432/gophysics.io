@@ -52,9 +52,6 @@ code {
     text-align: left;
     white-space: pre-line;
 }
-.codes, li {
-    color: white;
-}
 .imports {
     color: rgb(151, 78, 78);
 }
