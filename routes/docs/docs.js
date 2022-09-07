@@ -33,7 +33,7 @@ const EnergyDens = new Formula("func EnergyDens(electricFieldModule float64)", "
 const EnergyDensity = new Formula("func EnergyDensity(electricField, magneticField float64)", "(1/2)*Dieletric constant on vacuum*(electricField*electricField) + (1/(2*Vacuum Premittivity constant))*(magneticField*magneticField)", "J/m^3")
 const EscapeSpeed = new Formula("func EscapeSpeed(mass, radius float64)", "[(2*G*mass)/(radius)]^(1/2)", "m/s")
 // Making some space
-const Force = new Formula("func Force(mass, acceleration float64)", "It calculates", "N")
+const Force = new Formula("func Force(mass, acceleration float64)", "mass*acceleration", "N")
 const Frequency = new Formula("func Frequency(speed, distance float64)", "speed / distance", "hertz")
 const GaussFlux = new Formula("func GaussFlux(charge float64)", "charge / Vacuum Premittivity constant", "N*m^2/C")
 const GravAttract = new Formula("func GravAttract(mass1, mass2, distance float64)", "(G * mass1 * mass2) / (distance^2)", "m/s^2")
