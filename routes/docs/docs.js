@@ -184,3 +184,11 @@ function loadConstants() {
         "</div><br/><span class='codes'>Value: " + constantsList[i].value + " " + constantsList[i].measurementUnit + "</span></div><br />";
     }
 }
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
