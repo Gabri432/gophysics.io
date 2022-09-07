@@ -6,6 +6,15 @@ class Formula {
     }
 }
 
+class Constant {
+    constructor(name, value, measurementUnit) {
+        this.name = name;
+        this.value = value;
+        this.measurementUnit = measurementUnit;
+    }
+}
+
+// List of all functions
 const Acceleration = new Formula("func Acceleration(force, mass float64)", "force/mass.", "m/s^2")
 const AngularFreq = new Formula("func AngularFreq(time float64)", "(2 * greekPi) / time", "rad/s")
 const CentripetalAccel = new Formula("func CentripetalAccel(speed, radius float64)", "(speed^2) / radius", "m/s^2")
@@ -47,7 +56,7 @@ const LorentzFactor = new Formula("func LorentzFactor(speed float64)", "1/{[1-(s
 const MechanicalEner = new Formula("func MechanicalEner(potential, kinetic float64)", "potential + kinetic", "J")
 const Momentum = new Formula("func Momentum(mass, speed float64)", "mass * speed", "kg*m/s")
 const NeatHeatEnergyTransfer = new Formula("func NetHeatEnergyTransfer(thermalConductivityConstant, area, kelvinDeg_HeatVariation, time, width float64)", "-1 * (thermalConductivityConstant * area * kelvinDeg_HeatVariation * time) / (width)", "J")
-const NormalForce = new Formula("func NormalForce(mass, angleInDeg float64)", "", "N")
+const NormalForce = new Formula("func NormalForce(mass, angleInDeg float64)", "mass * Cosine(angleInDeg/radiant)", "N")
 const PendulumPeriod = new Formula("func PendulumPeriod(pendulumLength float64)", "(2 * greekPi) * (pendulumLength/G)^(1/2)", "s")
 const PhotoElettricEffect = new Formula("func PhotoElettricEffect(frequence float64)", "Planck constant * frequence", "J")
 // Making some space
@@ -83,7 +92,79 @@ const functionsList = [Acceleration, AngularFreq, CentripetalAccel, CentripetalF
     RelativTime, Resistance, Time, Voltage, Work
 ]
 
-window.onload = () => loadFormulas()
+// List of all constants
+const gravity = new Constant("Earth gravity", "9.81", "m/s^2")
+const c = new Constant("C (Light Speed on vacuum)", "299792452", "m/s")
+const lunarDist = new Constant("Earth-Moon Distance", "384,000,000", "m")
+const lunarDistMax = new Constant("Max Earth-Moon Distance", "405,000,000", "m")
+const lunarDistMin = new Constant("Min Earth-Moon Distance", "362,000,000", "m")
+const sound = new Constant("sound speed (on vacuum)", "340", "m/s")
+const au = new Constant("Astronomical unit", "1.49*10^11", "m")
+const parsec = new Constant("Parsec", "3.08*10^16", "m")
+// Making some space
+const earthMass = new Constant("Earth mass", "5.98*10^24", "kg")
+const sunMass = new Constant("Sun mass", "1.98*10^30", "kg")
+const moonMass = new Constant("Moon mass", "7.342*10^22", "kg")
+const earthRadius = new Constant("Earth radius", "6.378*10^6", "m")
+const sunRadius = new Constant("Sun radius", "6.9634*10^8", "m")
+const moonRadius = new Constant("Moon Radius", "1.731*10^6", "m")
+const G = new Constant("Universal Gravity Constant", "6.67*10^-11", "(N*m^2)/kg^2")
+const lightYear = new Constant("Light year", "9.46*10^15", "m")
+// Making some space
+const hubble = new Constant("Hubble constant", "69.8", "(km/s)/Mpc, Mpc is MegaParsec")
+const protonMass = new Constant("Proton mass", "1.672e-27", "kg")
+const electronMass = new Constant("Electron mass", "9.109*10^-31", "kg")
+const neutronMass = new Constant("Neutron mass", "1.674*10^-27", "kg")
+const absZero = new Constant("Absolute Zero", "-273", "°C")
+const avogadro = new Constant("Avogadro constant", "6.022*10^23", "molecules per mole")
+const R = new Constant("R constant", "8.316", "J / (Mole * °K)")
+const thermCoeffExpansion = new Constant("Thermal Coefficient Expansion", "1 / 273 or 0.036", "")
+const planck = new Constant("Planck constant", "6.6260693*10^-34", "(m^2 * kg) / (seconds)")
+// Making some space
+const planckMass = new Constant("Planck mass constant", "2.17645*10^-8", "kg")
+const planckTime = new Constant("Planck time constant", "5.391*10^-44", "s")
+const stefBoltz = new Constant("Stefan-Boltzmann Constant", "5.67*10^-8", "W/(m^2 * (°K)^4)")
+const dielettric = new Constant("Dielettric constant (Vacuum Permittivity)", "8.854*10^-12", "Faraday/m")
+const vacuumPermeability = new Constant("Vacuum Permeability", "1.256637*10^-6", "Henry/meter or N/A (Newton per Ampere)")
+const elemCharge = new Constant("Elementary charge", "1.602e-19", "C")
+const silverResistivity = new Constant("Silver resistivity (at 20 °C)", "1.59e-8", "Ohm*m")
+const copperResistivity = new Constant("Copper resistivity (at 20 °C)", "1.68e-8", "Ohm*m")
+const ironResistivity = new Constant("Iron resistivity (at 20 °C)", "1.3e-7", "Ohm*m")
+const steelResistivity = new Constant("Steel resistivity (at 20 °C)", "1.8e-7", "Ohm*m")
+// Making some space
+const proportConst = new Constant("Proportionality constant", "2.7*10^-7", "N/(A^2)")
+const weber = new Constant("Weber", "10^8", "Maxwell")
+const tesla = new Constant("Tesla", "10^4", "Gauss")
+const atomicMass = new Constant("Atomic mass", "1.66053*10^-27", "kg")
+const airDensity = new Constant("Air Density", "1.29", "kg/(m^3)")
+const waterDensity = new Constant("Water density", "10^3", "kg/(m^3)")
+const heliumMass = new Constant("Helium mass", "5.006*10^-27", "kg")
+const atm = new Constant("Atmosphere", "1.013*10^5", "Pascal")
+const angstrom = new Constant("Angstrom", "10^-19", "m")
+// Making some space
+const waterViscosity0 = new Constant("Water viscosity at 0 °C", "1.8*10^-3", "Pascal*s")
+const waterViscosity20 = new Constant("Water viscosity at 20 °C", "10*10^-3", "Pascal*s")
+const copperConducibility = new Constant("Copper conducibility", "384", "W/(m * °K)")
+const goldConducibility = new Constant("Gold conducibility", "300", "W/(m * °K)")
+const ironConducibility = new Constant("Iron conducibility", "70", "W/(m * °K)")
+const airConducibility = new Constant("Air conducibility", "0.02", "W/(m * °K)")
+const carbonEmissivity = new Constant("Carbon emissivity coefficient", "0.92", "")
+const ironEmissivity = new Constant("Iron emissivity coefficient", "0.40", "")
+const copperEmissivity = new Constant("Copper emissivity coefficient", "0.30", "")
+const silverEmissivity = new Constant("Silver emissivity coefficient", "0.05", "")
+
+const constantsList = [absZero, airConducibility, airDensity, angstrom, atm, atomicMass, au, avogadro, c, carbonEmissivity,
+    copperConducibility, copperEmissivity, copperResistivity, dielettric, earthMass, earthRadius, electronMass, elemCharge, G, 
+    goldConducibility, gravity, heliumMass, hubble, ironConducibility, ironEmissivity, ironResistivity, lightYear, moonMass,
+    moonRadius, neutronMass, parsec, planck, planckMass, planckTime, proportConst, protonMass, R, silverEmissivity, silverResistivity,
+    sound, steelResistivity, stefBoltz, sunMass, sunRadius, tesla, thermCoeffExpansion, vacuumPermeability, waterDensity, waterViscosity0,
+    waterViscosity20, weber
+];
+
+window.onload = () => {
+    loadFormulas()
+    loadConstants()
+}
 
 function loadFormulas() {
     var documentationHtml = document.getElementById("functionsListHtml");
@@ -91,5 +172,13 @@ function loadFormulas() {
         documentationHtml.innerHTML += "<div class='func'><div class='function-displayer'>" + functionsList[i].name + 
         "</div><br/><span class='codes'>Formula: " + functionsList[i].formula + 
         "<br />Measurement Unit: " + functionsList[i].measurementUnit + "</span></div><br />";
+    }
+}
+
+function loadConstants() {
+    var documentationHtml = document.getElementById("constantsListHtml")
+    for (var i=0; i<constantsList.length; i++) {
+        documentationHtml.innerHTML += "<div class='func'><div class='function-displayer'>" + constantsList[i].name + 
+        "</div><br/><span class='codes'>Value: " + constantsList[i].value + " " + constantsList[i].measurementUnit + "</span></div><br />";
     }
 }
