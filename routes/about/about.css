@@ -40,6 +40,9 @@ a {
     padding-left: 15%;
     font-size: 22px;
 }
+.text a {
+    color: blue;
+  }
 ::-webkit-scrollbar {
     width: 10px;
   }
