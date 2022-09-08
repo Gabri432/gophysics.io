@@ -104,4 +104,7 @@ a {
         padding: 2%;
         margin-left: 9%;
     }
+    .sidenav {
+        display: none;
+    }
 }
