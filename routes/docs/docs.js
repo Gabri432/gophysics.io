@@ -18,7 +18,7 @@ class Constant {
 const Acceleration = new Formula("Acceleration (force, mass float64)", "force/mass.", "m/s^2")
 const AngularFreq = new Formula("AngularFreq (time float64)", "(2 * greekPi) / time", "rad/s")
 const CentripetalAccel = new Formula("CentripetalAccel (speed, radius float64)", "(speed^2) / radius", "m/s^2")
-const CentripetalForce = new Formula(" CentripetalForce (mass, speed, radius float64)", "(mass * speed^2) / radius", "N")
+const CentripetalForce = new Formula("CentripetalForce (mass, speed, radius float64)", "(mass * speed^2) / radius", "N")
 const Density = new Formula("Density (weight, volume float64)", "weight/volume", "kg/m^3")
 // Making some space
 const DopplerCloser = new Formula("DopplerCloser (speed, frequence float64)", "(1 + (speed / 340)) * frequence", "hertz")
@@ -58,7 +58,7 @@ const Momentum = new Formula("Momentum (mass, speed float64)", "mass * speed", "
 const NeatHeatEnergyTransfer = new Formula("NetHeatEnergyTransfer (thermalConductivityConstant, area, kelvinDeg_HeatVariation, time, width float64)", "-1 * (thermalConductivityConstant * area * kelvinDeg_HeatVariation * time) / (width)", "J")
 const NormalForce = new Formula("NormalForce (mass, angleInDeg float64)", "mass * Cosine(angleInDeg/radiant)", "N")
 const PendulumPeriod = new Formula("PendulumPeriod (pendulumLength float64)", "(2 * greekPi) * (pendulumLength/G)^(1/2)", "s")
-const PhotoElettricEffect = new Formula(" PhotoElettricEffect (frequence float64)", "Planck constant * frequence", "J")
+const PhotoElettricEffect = new Formula("PhotoElettricEffect (frequence float64)", "Planck constant * frequence", "J")
 // Making some space
 const PotentialElasticEner = new Formula("PotentialElasticEner (elasticConstant, distance float64)", "(1 / 2) * elasticConstant * (distance^2)", "J")
 const PotentialEner = new Formula("PotentialEner (mass, acceleration, height float64)", "mass * acceleration * height", "J")
