@@ -22,8 +22,8 @@ nav {
     font-size: 20px;
 }
 a {
-    color: white;
     text-decoration: none;
+    color: white;
 }
 #page-title {
     text-align: center;
@@ -39,29 +39,6 @@ a {
     width: 70%;
     padding-left: 15%;
     font-size: 22px;
-}
-pre {
-    background-color: #373737;
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 2%;
-}
-code {
-    color: greenyellow;
-    text-align: left;
-    white-space: pre-line;
-}
-.codes {
-    color: white;
-}
-.imports {
-    color: rgb(151, 78, 78);
-}
-.func {
-    color: blue;
-}
-.func-name {
-    color: yellow;
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -79,9 +56,6 @@ code {
     background: #555; 
   }
 @media only screen and (max-width: 900px){
-    pre {
-        font-size: 12px;
-    }
     #main {
         width: 80%;
         padding: 2%;
