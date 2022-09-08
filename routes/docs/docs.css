@@ -68,21 +68,35 @@ a {
     left: 0;
     background-color: #262626;
     overflow-x: hidden;
-    transition: 0.5s;
 }
   
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
     color: #818181;
     display: block;
-    transition: 0.3s;
 }
   
 .sidenav a:hover {
     color: #f1f1f1;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #373737; 
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
 
 @media only screen and (max-width: 900px){
     #main {

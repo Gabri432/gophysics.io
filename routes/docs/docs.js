@@ -168,17 +168,23 @@ window.onload = () => {
 
 function loadFormulas() {
     var documentationHtml = document.getElementById("functionsListHtml");
+    var sideNav = document.getElementById("mySidenav");
+    sideNav.innerHTML = "<h3><a>Formulas</a></h3>";
     for (var i=0; i<functionsList.length; i++) {
+        const funcName = String(functionsList[i].name).split(" ")[0]
         documentationHtml.innerHTML += 
-        "<div class='func'><div class='function-displayer' id="+ String(functionsList[i].name).split(" ")[0] +">" + functionsList[i].name + 
+        "<div class='func'><div class='function-displayer' id="+ funcName +">" + functionsList[i].name + 
         "</div><br/><span class='codes'>Formula: " + functionsList[i].formula + 
         "</span><br /><span class='codes'>Measurement Unit: " + functionsList[i].measurementUnit + "</span></div><br />";
+
+        sideNav.innerHTML += "<a href=#"+funcName+">"+ funcName+ "</a>";
     }
 }
 
 function loadConstants() {
     var documentationHtml = document.getElementById("constantsListHtml");
     var sideNav = document.getElementById("mySidenav");
+    sideNav.innerHTML = "<h3><a>Constants</a></h3>";
     for (var i=0; i<constantsList.length; i++) {
         documentationHtml.innerHTML += 
         "<div class='func'><div class='function-displayer' id="+ constantsList[i].name +">" + constantsList[i].name + 
