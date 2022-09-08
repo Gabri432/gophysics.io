@@ -178,6 +178,7 @@ function loadFormulas() {
         "</span><br /><span class='codes'>Measurement Unit: " + functionsList[i].measurementUnit + "</span></div><br />";
 
         sideNav.innerHTML += "<a href=#"+funcName+">"+ funcName+ "</a>";
+        console.log(funcName);
     }
 }
 
