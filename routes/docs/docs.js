@@ -127,10 +127,10 @@ const stefBoltz = new Constant("Stefan-Boltzmann Constant", "5.67*10^-8", "W/(m^
 const dielettric = new Constant("Dielettric constant (Vacuum Permittivity)", "8.854*10^-12", "Faraday/m")
 const vacuumPermeability = new Constant("Vacuum Permeability", "1.256637*10^-6", "Henry/meter or N/A (Newton per Ampere)")
 const elemCharge = new Constant("Elementary charge", "1.602e-19", "C")
-const silverResistivity = new Constant("Silver resistivity (at 20 °C)", "1.59e-8", "Ohm*m")
-const copperResistivity = new Constant("Copper resistivity (at 20 °C)", "1.68e-8", "Ohm*m")
-const ironResistivity = new Constant("Iron resistivity (at 20 °C)", "1.3e-7", "Ohm*m")
-const steelResistivity = new Constant("Steel resistivity (at 20 °C)", "1.8e-7", "Ohm*m")
+const silverResistivity = new Constant("Silver resistivity (at 20 °C)", "1.59*10^-8", "Ohm*m")
+const copperResistivity = new Constant("Copper resistivity (at 20 °C)", "1.68*10^-8", "Ohm*m")
+const ironResistivity = new Constant("Iron resistivity (at 20 °C)", "9.7*10^-8", "Ohm*m")
+const steelResistivity = new Constant("Steel resistivity (at 20 °C)", "69.0*10^-8", "Ohm*m")
 // Making some space
 const proportConst = new Constant("Proportionality constant", "2.7*10^-7", "N/(A^2)")
 const weber = new Constant("Weber", "10^8", "Maxwell")
@@ -144,19 +144,15 @@ const angstrom = new Constant("Angstrom", "10^-19", "m")
 // Making some space
 const waterViscosity0 = new Constant("Water viscosity at 0 °C", "1.8*10^-3", "Pascal*s")
 const waterViscosity20 = new Constant("Water viscosity at 20 °C", "10*10^-3", "Pascal*s")
-const copperConducibility = new Constant("Copper conducibility", "384", "W/(m * °K)")
-const goldConducibility = new Constant("Gold conducibility", "300", "W/(m * °K)")
-const ironConducibility = new Constant("Iron conducibility", "70", "W/(m * °K)")
-const airConducibility = new Constant("Air conducibility", "0.02", "W/(m * °K)")
-const carbonEmissivity = new Constant("Carbon emissivity coefficient", "0.92", "")
-const ironEmissivity = new Constant("Iron emissivity coefficient", "0.40", "")
-const copperEmissivity = new Constant("Copper emissivity coefficient", "0.30", "")
-const silverEmissivity = new Constant("Silver emissivity coefficient", "0.05", "")
+const copperConductivity = new Constant("Copper conductivity", "401", "W/(m * °K)")
+const goldConductivity = new Constant("Gold conductivity (at 0 °C)", "318", "W/(m * °K)")
+const ironConductivity = new Constant("Iron conductivity (at 0 °C)", "83.5", "W/(m * °K)")
+const airConductivity = new Constant("Air conductivity (at 0 °C)", "0.024", "W/(m * °K)")
 
-const constantsList = [absZero, airConducibility, airDensity, angstrom, atm, atomicMass, au, avogadro, c, carbonEmissivity,
-    copperConducibility, copperEmissivity, copperResistivity, dielettric, earthMass, earthRadius, electronMass, elemCharge, G, 
-    goldConducibility, gravity, heliumMass, hubble, ironConducibility, ironEmissivity, ironResistivity, lightYear, moonMass,
-    moonRadius, neutronMass, parsec, planck, planckMass, planckTime, proportConst, protonMass, R, silverEmissivity, silverResistivity,
+const constantsList = [absZero, airConductivity, airDensity, angstrom, atm, atomicMass, au, avogadro, c,
+    copperConductivity, copperResistivity, dielettric, earthMass, earthRadius, electronMass, elemCharge, G, 
+    goldConductivity, gravity, heliumMass, hubble, ironConductivity, ironResistivity, lightYear, moonMass,
+    moonRadius, neutronMass, parsec, planck, planckMass, planckTime, proportConst, protonMass, R, silverResistivity,
     sound, steelResistivity, stefBoltz, sunMass, sunRadius, tesla, thermCoeffExpansion, vacuumPermeability, waterDensity, waterViscosity0,
     waterViscosity20, weber
 ];
