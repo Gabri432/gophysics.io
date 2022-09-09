@@ -60,6 +60,7 @@ a {
 }
 .li a {
     color: black;
+    text-decoration: underline;
 }
 
 .sidenav {

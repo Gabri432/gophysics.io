@@ -42,7 +42,11 @@ a {
 }
 .text a {
     color: blue;
-  }
+}
+.li a {
+    color: black;
+    text-decoration: underline;
+}
 ::-webkit-scrollbar {
     width: 10px;
   }
