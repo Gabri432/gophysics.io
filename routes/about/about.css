@@ -43,7 +43,7 @@ a {
 .text a {
     color: blue;
 }
-.li a {
+li a {
     color: black;
     text-decoration: underline;
 }

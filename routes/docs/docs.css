@@ -58,7 +58,7 @@ a {
     font-size: 16px;
     padding: 2%;
 }
-.li a {
+li a {
     color: black;
     text-decoration: underline;
 }
