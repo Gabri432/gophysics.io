@@ -40,11 +40,16 @@ a {
     padding-left: 15%;
     font-size: 22px;
 }
-.bot-message {
-    border: 1px solid green;
+.bot-message, .user-message {
     border-radius: 5px;
     padding: 1%;
     width: 58%;
+}
+.bot-message {
+    border: 1px solid green;
+}
+.user-message {
+    border: 1px solid blue;
 }
 #input-bar {
     text-align: center;
