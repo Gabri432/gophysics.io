@@ -46,6 +46,31 @@ a {
     padding: 1%;
     width: 58%;
 }
+#input-bar {
+    text-align: center;
+}
+#input-text {
+    width: 75%;
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 18px;
+    border: 2px solid black;
+}
+#input-bar button {
+    font-size: 18px;
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #272727;
+    color: white;
+}
+
+#input-bar button:active {
+    color: #272727;
+    background-color: white;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
   }
