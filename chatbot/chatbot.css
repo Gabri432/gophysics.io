@@ -58,7 +58,7 @@ a {
     font-weight: bold;
 }
 .choice:hover {
-    font-size: 23px;
+    cursor: pointer;
 }
 .choice:active {
     font-size: 22px;
