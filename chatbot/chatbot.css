@@ -44,12 +44,14 @@ a {
     border-radius: 5px;
     padding: 1%;
     width: 58%;
+    margin-top: 5px;
 }
 .bot-message {
     border: 1px solid green;
 }
 .user-message {
     border: 1px solid blue;
+    float: right;
 }
 #input-bar {
     text-align: center;
