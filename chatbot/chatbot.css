@@ -40,7 +40,7 @@ a {
     padding-left: 15%;
     font-size: 22px;
 }
-.bot-message, .user-message {
+.bot-message, .user-message, .choice {
     border-radius: 5px;
     padding: 1%;
     width: 58%;
@@ -52,6 +52,18 @@ a {
 .user-message {
     border: 1px solid blue;
     float: right;
+}
+.choice {
+    color: green;
+    font-weight: bold;
+}
+.choice:hover {
+    font-size: 23px;
+}
+.choice:active {
+    font-size: 22px;
+    color: white;
+    background-color: green;
 }
 #input-bar {
     text-align: center;
