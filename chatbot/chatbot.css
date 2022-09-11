@@ -1,0 +1,71 @@
+body {
+    background-color: rgb(225, 249, 241);
+    margin: 0;
+    font-family: 'Trebuchet MS', sans-serif, 'system-ui';
+}
+#header, #footer {
+    background-color: #262626;
+    margin: 0;
+    width: 96%;
+    color: white;
+    font-weight: bold;
+    padding: 2%;
+    text-align: center;
+}
+#header {
+    word-spacing: 10px;
+}
+#footer {
+    min-height: 100px;
+}
+nav {
+    font-size: 20px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+#page-title {
+    text-align: center;
+    font-size: 26px;
+}
+#main {
+    width: 66%;
+    margin-left: 15%;
+    padding: 2%;
+    background-color: white;
+}
+.text {
+    width: 70%;
+    padding-left: 15%;
+    font-size: 22px;
+}
+.text a {
+    color: blue;
+}
+li a {
+    color: black;
+    text-decoration: underline;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #373737; 
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+@media only screen and (max-width: 900px){
+    #main {
+        width: 80%;
+        padding: 2%;
+        margin-left: 9%;
+    }
+}
