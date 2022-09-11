@@ -46,7 +46,7 @@ a {
     width: 58%;
     margin-top: 5px;
 }
-.bot-message {
+.bot-message, .choice {
     border: 1px solid green;
 }
 .user-message {
