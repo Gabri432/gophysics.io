@@ -1,13 +1,28 @@
-const pathOneKeywords = {
+const needToFindConstantOrFormulaKeywords = {
     needToSearchKeywords: [
         "formula", "formulas", "constant", "constant", "function", "functions"
     ],
     forgotWhichKeywords: [
-        "no", "dunno", "don't", "dont", "cannot", "cant", "can't"
+        "no", "dunno", "don't", "dont", "cannot", "cant", "can't", "remeber"
+    ],
+    iKnowWhichFormulaKeywords: ["Acceleration", "AngularFreq", "CentripetalAccel", "CentripetalForce", "Density", "DopplerCloser", 
+        "DopplerFarer", "ElectricField", "ElectricPotentDiff", "ElectricPotentEnergyDiff", "EnergyDens", "EnergyDensity", "EscapeSpeed",
+        "Force", "Frequency", "GaussFlux", "GravAttract", "GravField", "HeatFlux", "Intensity", "LawCoulomb", "LawGayLussacPressure", "LawGayLussacVolume",
+        "LawHagenPoiseuille", "LawOhm1", "LawOhm2", "LawStokes", "LorentzFactor", "MechanicalEner", "Momentum", "NeatHeatEnergyTransfer",
+        "NormalForce", "PendulumPeriod", "PhotoElettricEffect", "PotentialElasticEner", "PotentialEner", "PotentialGravEner", "PotentialGravEner2",
+        "Power", "Pressure", "ProjectileFlightTime", "ProjectileMaxHeight", "ProjectileMaxRange", "RelativDist", "RelativMass", "RelativMomentum",
+        "RelativTime", "Resistance", "Time", "Voltage", "Work"
+    ],
+    constantsList: ["absZero", "airConductivity", "airDensity", "angstrom", "atm", "atomicMass", "au", "avogadro", "c",
+        "copperConductivity", "copperResistivity", "dielettric", "earthMass", "earthRadius", "electronMass", "elemCharge", "G", 
+        "goldConductivity", "gravity", "heliumMass", "hubble", "ironConductivity", "ironResistivity", "lightYear", "moonMass",
+        "moonRadius", "neutronMass", "parsec", "planck", "planckMass", "planckTime", "proportConst", "protonMass", "R", "silverResistivity",
+        "sound", "steelResistivity", "stefBoltz", "sunMass", "sunRadius", "tesla", "thermCoeffExpansion", "vacuumPermeability", "waterDensity", 
+        "waterViscosity0", "waterViscosity20", "weber"
     ]
 }
 
-const pathTwoKeywords = {
+const needToContactSomeoneKeywords = {
     contactKeywords: [
         "someone", "some one", "somebody", "contact", "help"
     ],
