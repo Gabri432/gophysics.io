@@ -1,3 +1,10 @@
+class ChoiceType {
+    constructor(choiceName, functionTobeCalled) {
+        this.choiceName = choiceName;
+        this.functionTobeCalled = functionTobeCalled;
+    }
+}
+
 const needToFindConstantOrFormulaKeywords = {
     needToSearchKeywords: [
         "formula", "formulas", "constant", "constant", "function", "functions"
@@ -33,37 +40,62 @@ const needToContactSomeoneKeywords = {
     ]
 }
 
+const botQuestions = [
+    "Hi! I'm Gabry, how can I help you?", "Ok, is it a formula or a constant?", "Ok, why you need to talk to someone?",
+    "Write the formula you are looking for.", "Write the constant you are looking for."
+];
+
+const contexts = [
+    "begin", "searchingFormula", "searchingConstant", "askingWhyNeedsContacts"
+];
+
+var currentContext = "";
+
 function returnBotAnswer(answer) {
     return "<div class='bot-message'>" + answer + "</div>";
 }
 function displayChoices(choice1, choice2) {
-    return "<div class='choice'>" + choice1 + "</div><div class='choice'>"+ choice2 + "</div>";
+    return "<div class='choice' onclick='"+ choice1.functionTobeCalled +"()'>" + choice1.choiceName + 
+    "</div><div class='choice' onclick='"+ choice2.functionTobeCalled +"()'>"+ choice2.choiceName + "</div>";
 }
 
 function searchFormulaOrConstant() {
+    currentContext = ""
     var conversationHtml = document.getElementById("conversation");
-    conversationHtml = "..."
-    delay(2000)
-    conversationHtml = returnBotAnswer("Ok, is it a formula or a constant?")
-    conversationHtml += displayChoices("It is a formula.", "It is a constant."); 
+    conversationHtml = "...";
+    delay(2000);
+    conversationHtml = returnBotAnswer("Ok, is it a formula or a constant?");
+    choice1 = new ChoiceType(choiceName = "It is a formula", functionTobeCalled = "searchFor");
+    choice2 = new ChoiceType(choiceName = "It is a constant", functionTobeCalled = "searchFor");
+    conversationHtml += displayChoices(choice1, choice2); 
+}
+
+function searchFor() {
+    var conversationHtml = document.getElementById("conversation");
+    conversationHtml = "...";
+    delay(2000);
+    conversationHtml = returnBotAnswer("Write the formula you are looking for.");
 }
 
 function searchContacts() {
     var conversationHtml = document.getElementById("conversation");
-    conversationHtml = "..."
-    delay(2000)
-    conversationHtml = returnBotAnswer("Ok, why you need to talk to someone?")
-    conversationHtml += displayChoices("I need to report a bug or a suggestion for improvement.", "I just want to talk with the developer."); 
+    conversationHtml = "...";
+    delay(2000);
+    conversationHtml = returnBotAnswer("Ok, why you need to talk to someone?");
+    choice1 = new ChoiceType(
+        choiceName = "I need to report a bug or a suggestion for improvement.",
+        functionTobeCalled = "redirectTo('You will be redirected to Github within 3 seconds.', 'https://github.com/Gabri432/gophysics/issues/new')"
+    );
+    choice2 = new ChoiceType(
+        choiceName = "I just want to talk with the developer.",
+        functionTobeCalled = "redirectTo('You will be redirected to Linkedin within 3 seconds.', 'https://www.linkedin.com/in/gabriele-gatti-87b321190')"
+    );
+    conversationHtml += displayChoices(choice1, choice2); 
 }
 
-function returnLinkedin() {
-    conversationHtml = returnBotAnswer("You will be redirected to Linkedin within 3 seconds.")
-    delay(3000).then(() => window.location.href = "https://www.linkedin.com/in/gabriele-gatti-87b321190");
-}
-
-function returnGithub() {
-    conversationHtml = returnBotAnswer("You will be redirected to Github within 3 seconds.")
-    delay(3000).then(() => window.location.href = "https://github.com/Gabri432/gophysics/issues/new");
+function redirectTo(botAnswer, link) {
+    conversationHtml = returnBotAnswer(botAnswer)
+    delay(3000).then(() => window.location.href = link);
 }
 
 function delay(time) {
@@ -72,7 +104,11 @@ function delay(time) {
 
 function restartConversation() {
     var conversationHtml = document.getElementById("conversation");
+    conversationHtml = "..."
+    delay(2000);
     conversationHtml = returnBotAnswer("Hi! I'm Gabry, how can I help you?"); 
+    choice1 = new ChoiceType(choiceName = "It is a formula", functionTobeCalled = "searchFormula")
+    choice2 = new ChoiceType(choiceName = "It is a constant", functionTobeCalled = "searchConstant")
     conversationHtml += displayChoices("I need to find a specific constant or formula.", "I need to talk to someone.");
 }
 
