@@ -36,19 +36,24 @@ const needToContactSomeoneKeywords = {
 function returnBotAnswer(answer) {
     return "<div class='bot-message'>" + answer + "</div>";
 }
-function askToMakeChoices(choice1, choice2) {
+function displayChoices(choice1, choice2) {
     return "<div class='choice'>" + choice1 + "</div><div class='choice'>"+ choice2 + "</div>";
 }
 
 function searchFormulaOrConstant() {
     var conversationHtml = document.getElementById("conversation");
-    conversationHtml += askToMakeChoices("Is it a formula.", "Is it a constant."); 
+    conversationHtml = "..."
+    delay(2000)
+    conversationHtml = returnBotAnswer("Ok, is it a formula or a constant?")
+    conversationHtml += displayChoices("It is a formula.", "It is a constant."); 
 }
 
 function searchContacts() {
     var conversationHtml = document.getElementById("conversation");
+    conversationHtml = "..."
+    delay(2000)
     conversationHtml = returnBotAnswer("Ok, why you need to talk to someone?")
-    conversationHtml += askToMakeChoices("I need to report a bug or a suggestion for improvement.", "I just want to talk with the developer."); 
+    conversationHtml += displayChoices("I need to report a bug or a suggestion for improvement.", "I just want to talk with the developer."); 
 }
 
 function returnLinkedin() {
@@ -68,7 +73,7 @@ function delay(time) {
 function restartConversation() {
     var conversationHtml = document.getElementById("conversation");
     conversationHtml = returnBotAnswer("Hi! I'm Gabry, how can I help you?"); 
-    conversationHtml += askToMakeChoices("I need to find a specific constant or formula.", "I need to talk to someone.");
+    conversationHtml += displayChoices("I need to find a specific constant or formula.", "I need to talk to someone.");
 }
 
 function help() {
