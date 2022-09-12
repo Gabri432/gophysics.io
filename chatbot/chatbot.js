@@ -9,10 +9,7 @@ const needToFindConstantOrFormulaKeywords = {
     needToSearchKeywords: [
         "formula", "formulas", "constant", "constant", "function", "functions"
     ],
-    forgotWhichKeywords: [
-        "no", "dunno", "don't", "dont", "cannot", "cant", "can't", "remeber"
-    ],
-    iKnowWhichFormulaKeywords: ["Acceleration", "AngularFreq", "CentripetalAccel", "CentripetalForce", "Density", "DopplerCloser", 
+    iKnowWhichFunctionKeywords: ["Acceleration", "AngularFreq", "CentripetalAccel", "CentripetalForce", "Density", "DopplerCloser", 
         "DopplerFarer", "ElectricField", "ElectricPotentDiff", "ElectricPotentEnergyDiff", "EnergyDens", "EnergyDensity", "EscapeSpeed",
         "Force", "Frequency", "GaussFlux", "GravAttract", "GravField", "HeatFlux", "Intensity", "LawCoulomb", "LawGayLussacPressure", "LawGayLussacVolume",
         "LawHagenPoiseuille", "LawOhm1", "LawOhm2", "LawStokes", "LorentzFactor", "MechanicalEner", "Momentum", "NeatHeatEnergyTransfer",
@@ -20,7 +17,7 @@ const needToFindConstantOrFormulaKeywords = {
         "Power", "Pressure", "ProjectileFlightTime", "ProjectileMaxHeight", "ProjectileMaxRange", "RelativDist", "RelativMass", "RelativMomentum",
         "RelativTime", "Resistance", "Time", "Voltage", "Work"
     ],
-    constantsList: ["absZero", "airConductivity", "airDensity", "angstrom", "atm", "atomicMass", "au", "avogadro", "c",
+    iKnowWhichConstantKeywords: ["absZero", "airConductivity", "airDensity", "angstrom", "atm", "atomicMass", "au", "avogadro", "c",
         "copperConductivity", "copperResistivity", "dielettric", "earthMass", "earthRadius", "electronMass", "elemCharge", "G", 
         "goldConductivity", "gravity", "heliumMass", "hubble", "ironConductivity", "ironResistivity", "lightYear", "moonMass",
         "moonRadius", "neutronMass", "parsec", "planck", "planckMass", "planckTime", "proportConst", "protonMass", "R", "silverResistivity",
@@ -30,54 +27,47 @@ const needToFindConstantOrFormulaKeywords = {
 }
 
 const needToContactSomeoneKeywords = {
-    contactKeywords: [
+    justToTalkKeywords: [
         "someone", "some one", "somebody", "contact", "help"
     ],
-    whyContactKeywords: [
+    reportBugKeywords: [
         "issue", "issues", "problem", "problems", "report", "reports", "bug", "bugs", 
         "mistake", "mistakes", "error", "errors", "improvement", "improvements", "suggestion", "suggestions",
         "feature", "features"
     ]
 }
 
-const botQuestions = [
-    "Hi! I'm Gabry, how can I help you?", "Ok, is it a formula or a constant?", "Ok, why you need to talk to someone?",
-    "Write the formula you are looking for.", "Write the constant you are looking for."
-];
-
 const contexts = [
-    "begin", "searchingFormula", "searchingConstant", "askingWhyNeedsContacts"
+    "begin", "askingIfFunctionOrConstant","searchingFunction", "searchingConstant", "askingWhyNeedsContacts"
 ];
 
-var currentContext = "";
+var currentContext = "begin";
 
 function returnBotAnswer(answer) {
     return "<div class='bot-message'>" + answer + "</div>";
 }
 function displayChoices(choice1, choice2) {
-    return "<div class='choice' onclick='"+ choice1.functionTobeCalled +"()'>" + choice1.choiceName + 
-    "</div><div class='choice' onclick='"+ choice2.functionTobeCalled +"()'>"+ choice2.choiceName + "</div>";
+    return "<div class='choice' onclick='"+ choice1.functionTobeCalled +"'>" + choice1.choiceName + 
+    "</div><div class='choice' onclick='"+ choice2.functionTobeCalled +"'>"+ choice2.choiceName + "</div>";
 }
 
-function searchFormulaOrConstant() {
-    currentContext = ""
+function askingIfFunctionOrConstant() {
+    currentContext = "askingIfFunctionOrConstant"
     var conversationHtml = document.getElementById("conversation");
     conversationHtml = "...";
     delay(2000);
-    conversationHtml = returnBotAnswer("Ok, is it a formula or a constant?");
-    choice1 = new ChoiceType(choiceName = "It is a formula", functionTobeCalled = "searchFor");
-    choice2 = new ChoiceType(choiceName = "It is a constant", functionTobeCalled = "searchFor");
+    conversationHtml = returnBotAnswer("Ok, is it a function or a constant?");
+    choice1 = new ChoiceType(
+        choiceName = "It is a function", functionTobeCalled = "returnBotAnswer('Write the function name you are looking for')"
+    );
+    choice2 = new ChoiceType(
+        choiceName = "It is a constant", functionTobeCalled = "returnBotAnswer('Write the constant name you are looking for')"
+    );
     conversationHtml += displayChoices(choice1, choice2); 
 }
 
-function searchFor() {
-    var conversationHtml = document.getElementById("conversation");
-    conversationHtml = "...";
-    delay(2000);
-    conversationHtml = returnBotAnswer("Write the formula you are looking for.");
-}
-
-function searchContacts() {
+function askingWhyNeedsContacts() {
+    currentContext = "askingWhyNeedsContacts"
     var conversationHtml = document.getElementById("conversation");
     conversationHtml = "...";
     delay(2000);
@@ -103,6 +93,7 @@ function delay(time) {
 }
 
 function restartConversation() {
+    currentContext = "begin"
     var conversationHtml = document.getElementById("conversation");
     conversationHtml = "..."
     delay(2000);
@@ -122,13 +113,57 @@ function dontUnderstand() {
 
 function searchKeyword(wordToSearch, listofWords) {
     for (var word of listofWords) {
-        if (wordToSearch == word) {}
+        if (wordToSearch == word.toLowerCase()) {
+            return word
+        }
     }
+    return ""
 }
 
 function handleUserInput() {
     var input = document.getElementById("input-text").value;
     conversationHtml = "<div class='user-message'>" + input + "</div>";
-    var userInput = input.toLowerCase().replace(/["%","-","&","€","!","?","*","=","@","$","\n", "."]/g,",");
+    var cleanerInput = input.toLowerCase().replace(/["the", "i", "am", "is", "isn't", "are", "aren't", "it", "was", "were"]/g, "");
+    var userInput = cleanerInput.replace(/["%","-","&","€","!","?","*","=","@","$","\n", "."]/g,"").replace(/[" "]/g, ",");
     var userKeywords = userInput.split(",");
+    switch (currentContext) {
+    case "begin":
+    case "askingIfFunctionOrConstant":
+    case "searchingFunction":
+        for (var keyword of userKeywords) {
+            var word = searchKeyword(keyword, needToFindConstantOrFormulaKeywords.iKnowWhichFunctionKeywords)
+            if (word != "") {
+                redirectTo(
+                "You will be redirected to the section of the documentation with this line", 
+                "https://gabri432.github.io/gophysics.io/routes/docs/docs.html#"+ keyword
+                )
+            }
+        }
+    case "searchingConstant":
+        for (var keyword of userKeywords) {
+            var word = searchKeyword(keyword, needToFindConstantOrFormulaKeywords.iKnowWhichConstantKeywords)
+            if (word != "") {
+                redirectTo(
+                "You will be redirected to the section of the documentation with this line", 
+                "https://gabri432.github.io/gophysics.io/routes/docs/docs.html#"+ keyword
+                )
+            }
+        }
+    case "askingWhyNeedsContacts":
+        for (var keyword of userKeywords) {
+            if (searchKeyword(keyword, needToContactSomeoneKeywords.reportBugKeywords) != "") {
+                redirectTo(
+                "You will be redirected to Github to send your request.", 
+                "https://github.com/Gabri432/gophysics/issues/new"
+                )
+            } else if (searchKeyword(keyword, needToContactSomeoneKeywords.justToTalkKeywords) != "") {
+                redirectTo(
+                    "You will be redirected to Linkedin to talk to the developer.", 
+                    "https://www.linkedin.com/in/gabriele-gatti-87b321190"
+                )
+            }
+        }
+    default:
+        "error"
+    }
 }
