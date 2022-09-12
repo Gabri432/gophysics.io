@@ -32,7 +32,22 @@ function searchFormulaOrConstant() {
 
 function searchContacts() {
     var conversationHtml = document.getElementById("conversation");
-    conversationHtml = askToMakeChoices("Do you need to report a bug or issue?", ""); 
+    conversationHtml = returnBotAnswer("Ok, why you need to talk to someone?")
+    conversationHtml += askToMakeChoices("I need to report a bug or a suggestion for improvement.", "I just want to talk with the developer."); 
+}
+
+function returnLinkedin() {
+    conversationHtml = returnBotAnswer("You will be redirected to Linkedin within 3 seconds.")
+    delay(3000).then(() => window.location.href = "https://www.linkedin.com/in/gabriele-gatti-87b321190");
+}
+
+function returnGithub() {
+    conversationHtml = returnBotAnswer("You will be redirected to Github within 3 seconds.")
+    delay(3000).then(() => window.location.href = "https://github.com/Gabri432/gophysics/issues/new");
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
 }
 
 function restartConversation() {
@@ -58,5 +73,6 @@ function searchKeyword(wordToSearch, listofWords) {
 function handleUserInput() {
     var input = document.getElementById("input-text").value;
     conversationHtml = "<div class='user-message'>" + input + "</div>";
-    var userInput = input.toLowerCase();
+    var userInput = input.toLowerCase().replace(/["%","-","&","€","!","?","*","=","@","$","\n", "."]/g,",");
+    var userKeywords = userInput.split(",");
 }
