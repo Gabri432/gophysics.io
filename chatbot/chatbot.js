@@ -43,12 +43,14 @@ const contexts = [
 
 var currentContext = "begin";
 
-var choice1 = document.getElementById("askingIfFunctionOrConstant");
-var choice2 = document.getElementById("askingWhyNeedsContacts");
-if (choice1 != null && choice2 != null) {
-    choice1.addEventListener("click", askingIfFunctionOrConstant(), false);
-    choice2.addEventListener("click", askingWhyNeedsContacts(), false);
-}
+window.addEventListener("DOMContentLoaded", () => {
+    var choice1 = document.getElementById("askingIfFunctionOrConstant");
+    var choice2 = document.getElementById("askingWhyNeedsContacts");
+    if (choice1 != null && choice2 != null) {
+        choice1.addEventListener("click", askingIfFunctionOrConstant(), false);
+        choice2.addEventListener("click", askingWhyNeedsContacts(), false);
+    }
+});
 
 function returnBotAnswer(answer) {
     return "<div class='bot-message'>" + answer + "</div>";
