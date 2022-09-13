@@ -43,7 +43,7 @@ const contexts = [
 
 var currentContext = "begin";
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", function() {
     var choice1 = document.getElementById("askingIfFunctionOrConstant");
     var choice2 = document.getElementById("askingWhyNeedsContacts");
     if (choice1 != null && choice2 != null) {
