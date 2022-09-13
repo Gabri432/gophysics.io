@@ -45,8 +45,10 @@ var currentContext = "begin";
 
 var choice1 = document.getElementById("askingIfFunctionOrConstant");
 var choice2 = document.getElementById("askingWhyNeedsContacts");
-choice1.addEventListener("click", askingIfFunctionOrConstant(), false);
-choice2.addEventListener("click", askingWhyNeedsContacts(), false);
+if (choice1 != null && choice2 != null) {
+    choice1.addEventListener("click", askingIfFunctionOrConstant(), false);
+    choice2.addEventListener("click", askingWhyNeedsContacts(), false);
+}
 
 function returnBotAnswer(answer) {
     return "<div class='bot-message'>" + answer + "</div>";
