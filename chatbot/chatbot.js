@@ -122,9 +122,11 @@ function findKeywordsAnswer2(userKeywords) {
 
 function handleUserInput() {
     var input = document.getElementById("input-text").value;
+    console.log(input);
     var conversationHtml = document.getElementById("conversation").innerHTML;
     conversationHtml += printUserInput(input);
     var userKeywords = filterInput(input).split(",");
+    console.log(userKeywords);
     if (lastAnsweredQuestion == "") {
         findKeywordsAnswer1(userKeywords);
     }
