@@ -69,7 +69,7 @@ function searchKeyword(wordToSearch, listofWords) {
 }
 
 function printUserInput(text) {
-    return "<div class='user-message'>" + text + "</div>";
+    return "<br /><div class='user-message'>" + text + "</div>";
 }
 
 function filterInput(text) {
