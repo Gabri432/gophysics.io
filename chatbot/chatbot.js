@@ -33,7 +33,7 @@ const option2Keywords = {
     ]
 }
 
-const questionsPath1 = ["Are you looking for a formula or a constant?", "Please type the name of the function/formula or constant."];
+const questionsPath1 = ["Are you looking for a formula or a constant?", "Please type its name."];
 const questionsPath2 = [
     "Do you need to make a suggestion/report or just talk to the developer?",
     "Do you have to report an issue with the website or the library?"

@@ -75,6 +75,7 @@ a {
     border: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    background-color: #c9c9c9;
 }
 #input-bar button {
     font-size: 18px;
