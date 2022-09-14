@@ -127,11 +127,11 @@ function handleUserInput() {
     var conversationHtml = document.getElementById("conversation");
     conversationHtml += printUserInput(input);
     var userKeywords = filterInput(input).split(",");
-    if (currentQuestion == "") {
+    if (lastAnsweredQuestion == "") {
         findKeywordsAnswer1(userKeywords);
     }
     var response = findKeywordsAnswer2(userKeywords);
-    switch (currentQuestion) {
+    switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
             conversationHtml += returnBotAnswer(questionsPath1[1])
         case questionsPath2[0]:
