@@ -46,7 +46,8 @@ function returnBotAnswer(answer) {
 }
 
 function redirectTo(botAnswer, link) {
-    conversationHtml += returnBotAnswer(botAnswer)
+    var conversationHtml = document.getElementById("conversation");
+    conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(botAnswer));
     delay(3000).then(() => window.location.href = link);
 }
 
