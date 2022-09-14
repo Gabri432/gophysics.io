@@ -70,15 +70,16 @@ a {
 }
 #input-text {
     width: 75%;
-    border-right: none;
+    height: 50px;
+    font-size: 18px;
+    border: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    font-size: 18px;
-    border: 2px solid black;
 }
 #input-bar button {
     font-size: 18px;
-    border-left: none;
+    height: 50px;
+    border: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background: #272727;
