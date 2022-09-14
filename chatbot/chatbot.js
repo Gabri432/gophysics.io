@@ -72,9 +72,7 @@ function printUserInput(text) {
 }
 
 function filterInput(text) {
-    var nonUsefulKeywords = /["the", "i", "am", "is", "isn't", "are", "aren't", "it", "was", "were", "looking", "for", "need", "to", "find", "a"]/g
-    var cleanerInput = text.toLowerCase().replace(nonUsefulKeywords, "");
-    var userInput = cleanerInput.replace(/["%","-","&","€","!","?","*","=","@","$","\n", "."]/g,"").replace(/[" "]/g, ",");
+    var userInput = text.replace(/["%","-","&","€","!","?","*","=","@","$","\n", "."]/g,"").replace(/[" "]/g, ",");
     console.log(userInput);
     return userInput
 }
@@ -162,5 +160,11 @@ window.addEventListener("DOMContentLoaded", function() {
     var clickButton = document.getElementById("clickButton");
     if (clickButton != null) {
         clickButton.addEventListener("click", handleUserInput, false);
+        clickButton.addEventListener("keypress", function(event) {
+            if (event.Key == "Enter") {
+                event.preventDefault()
+                handleUserInput()
+            }
+        });
     }
 })
