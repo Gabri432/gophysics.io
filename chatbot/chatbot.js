@@ -122,7 +122,7 @@ function findKeywordsAnswer2(userKeywords) {
 
 function handleUserInput() {
     var input = document.getElementById("input-text").value;
-    var conversationHtml = document.getElementById("conversation");
+    var conversationHtml = document.getElementById("conversation").innerHTML;
     conversationHtml += printUserInput(input);
     var userKeywords = filterInput(input).split(",");
     if (lastAnsweredQuestion == "") {
