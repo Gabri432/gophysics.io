@@ -122,15 +122,15 @@ function findKeywordsAnswer2(userKeywords) {
 
 function handleUserInput() {
     var input = document.getElementById("input-text").value;
-    console.log(input);
     var conversationHtml = document.getElementById("conversation").innerHTML;
     conversationHtml += printUserInput(input);
     var userKeywords = filterInput(input).split(",");
-    console.log(userKeywords);
     if (lastAnsweredQuestion == "") {
         findKeywordsAnswer1(userKeywords);
     }
+    console.log(lastAnsweredQuestion);
     var response = findKeywordsAnswer2(userKeywords);
+    console.log(lastAnsweredQuestion);
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
             conversationHtml += returnBotAnswer(questionsPath1[1])
