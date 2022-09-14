@@ -122,8 +122,8 @@ function findKeywordsAnswer2(userKeywords) {
 
 function handleUserInput() {
     var input = document.getElementById("input-text").value;
-    var conversationHtml = document.getElementById("conversation").innerHTML;
-    conversationHtml += printUserInput(input);
+    var conversationHtml = document.getElementById("conversation");
+    conversationHtml.insertAdjacentHTML( 'beforeend', printUserInput(input) );
     var userKeywords = filterInput(input).split(",");
     if (lastAnsweredQuestion == "") {
         findKeywordsAnswer1(userKeywords);
@@ -133,9 +133,9 @@ function handleUserInput() {
     console.log(lastAnsweredQuestion);
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
-            conversationHtml += returnBotAnswer(questionsPath1[1])
+            conversationHtml.insertAdjacentHTML('beforeend', returnBotAnswer(questionsPath1[1]));
         case questionsPath2[0]:
-            conversationHtml += returnBotAnswer(questionsPath2[1])
+            conversationHtml.insertAdjacentHTML('beforeend', returnBotAnswer(questionsPath2[1]));
         case questionsPath1[1]:
             if (response != "") {
                 redirectTo(
