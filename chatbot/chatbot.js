@@ -72,9 +72,9 @@ function printUserInput(text) {
 }
 
 function filterInput(text) {
-    var userInput = text.replace(/["%","-","&","€","!","?","*","=","@","$","\n", "."]/g,"").replace(/[" "]/g, ",");
-    console.log(userInput);
-    return userInput
+    var userInput = text.replace(/["%","-","&","€","!","?","*","=","@","$","\n", "."]/g,"");
+    console.log(userInput.replace(/[" "]/g, ","));
+    return userInput.replace(/[" "]/g, ",")
 }
 
 function findKeywordsAnswer1(userKeywords) {
