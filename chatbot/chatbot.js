@@ -21,41 +21,25 @@ const option1Keywords = {
 
 const option2Keywords = {
     answer1Keywords: [
-        "someone", "some one", "somebody", "contact", "help"
-    ],
-    answer2Keywords: [
-        "website", "library"
-    ],
-    answer3Keywords: [
         "issue", "issues", "problem", "problems", "report", "reports", "bug", "bugs", 
         "mistake", "mistakes", "error", "errors", "improvement", "improvements", "suggestion", "suggestions",
         "feature", "features", "trouble", "troubles"
+    ],
+    answer2Keywords: [
+        "website", "library"
     ]
 }
 
-const questionsPath1 = ["Are you looking for a formula or a constant?", "Please type its name."];
+const questionsPath1 = [
+    "Need to find a formula or constant?", 
+    "Please type its name."
+];
 const questionsPath2 = [
-    "Do you need to make a suggestion/report or just talk to the developer?",
+    "Need to report a suggestion or bug?",
     "Do you have to report an issue with the website or the library?"
 ];
 
-const option1 = {
-    question: questionsPath1[0],
-    answer1: "itIsFormula",
-    answer2: "itIsConstant"
-};
-const option2 = {
-    question: questionsPath2[0],
-    answer1: {
-        question: questionsPath2[1],
-        subpath1: "websiteIssue",
-        subpath2: "libraryIssue"
-
-    },
-    answer2: "justTalk"
-};
-
-const userPossibilities = [option1, option2];
+var lastAnsweredQuestion = "";
 
 function returnBotAnswer(answer) {
     return "<div class='bot-message'>" + answer + "</div>";
@@ -65,9 +49,6 @@ function redirectTo(botAnswer, link) {
     conversationHtml += returnBotAnswer(botAnswer)
     delay(3000).then(() => window.location.href = link);
 }
-//https://github.com/Gabri432/gophysics/issues/new
-//https://github.com/Gabri432/gophysics.io/issues/new
-//https://www.linkedin.com/in/gabriele-gatti-87b321190
 
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
@@ -103,25 +84,42 @@ function findKeywordsAnswer1(userKeywords) {
         var keywordOpt1 = searchKeyword(keyword, option1Keywords.answer1Keywords);
         var keywordOpt2 = searchKeyword(keyword, option2Keywords.answer1Keywords);
         if (keywordOpt1 != "") {
-            return {questionAnswered: option1.question, answer: keywordOpt1};
+            lastAnsweredQuestion = questionsPath1[0];
+            return;
         } else if (keywordOpt2 != "") {
-            return {questionAnswered: option2.question, answer: keywordOpt2};
+            lastAnsweredQuestion = questionsPath2[0];
+            return;
         }
     }
-    return {questionAnswered: "", answer: ""};;
+    return;
 }
 
 function findKeywordsAnswer2(userKeywords) {
-    for (var keyword of userKeywords) {
-        var keywordOpt1 = searchKeyword(keyword, option1Keywords.answer1Keywords);
-        var keywordOpt2 = searchKeyword(keyword, option2Keywords.answer1Keywords);
-        if (keywordOpt1 != "") {
-            return {questionAnswered: option1.question, answer: keywordOpt1};
-        } else if (keywordOpt2 != "") {
-            return {questionAnswered: option2.question, answer: keywordOpt2};
-        }
+    switch (lastAnsweredQuestion) {
+        case lastAnsweredQuestion == questionsPath1[0]:
+            for (var keyword of userKeywords) {
+                var formula = searchKeyword(keyword, option1Keywords.answer2FormulaKeywords);
+                var constant = searchKeyword(keyword, option1Keywords.answer2ConstantKeywords);
+                if (formula != "") {
+                    lastAnsweredQuestion = questionsPath1[1];
+                    return formula;
+                } else if (constant != "") {
+                    lastAnsweredQuestion = questionsPath1[1];
+                    return constant;
+                } else {
+                    return "";
+                }
+            }
+        case lastAnsweredQuestion == questionsPath2[0]:
+            for (var keyword of userKeywords) {
+                var keywordOpt2 = searchKeyword(keyword, option2Keywords.answer2Keywords);
+                if (keywordOpt2 != "") {
+                    lastAnsweredQuestion = questionsPath2[1];
+                    return keywordOpt2;
+                }
+            }
     }
-    return {questionAnswered: "", answer: ""};;
+    return "";
 }
 
 function handleUserInput() {
@@ -129,6 +127,40 @@ function handleUserInput() {
     var conversationHtml = document.getElementById("conversation");
     conversationHtml += printUserInput(input);
     var userKeywords = filterInput(input).split(",");
-    var response1 = findKeywordsAnswer1(userKeywords);
-    switch (response1) {}
+    if (currentQuestion == "") {
+        findKeywordsAnswer1(userKeywords);
+    }
+    var response = findKeywordsAnswer2(userKeywords);
+    switch (currentQuestion) {
+        case questionsPath1[0]:
+            conversationHtml += returnBotAnswer(questionsPath1[1])
+        case questionsPath2[0]:
+            conversationHtml += returnBotAnswer(questionsPath2[1])
+        case questionsPath1[1]:
+            if (response != "") {
+                redirectTo(
+                    "You will be redirected to the exact section of documentation of your interest in 3 seconds.",
+                    "https://gabri432.github.io/gophysics.io/routes/docs/docs.html#" + response
+                    )
+            }
+        case questionsPath2[1]:
+            if (response == "website") {
+                redirectTo(
+                    "You will be redirected to the Github page of the website in 3 seconds.",
+                    "https://github.com/Gabri432/gophysics.io/issues/new"
+                    )
+            } else if (response == "library") {
+                redirectTo(
+                    "You will be redirected to the exact section of documentation of your interest in 3 seconds.",
+                    "https://github.com/Gabri432/gophysics/issues/new"
+                    )
+            }
+    }
 }
+
+window.addEventListener("DOMContentLoaded", function() {
+    var clickButton = document.getElementById("clickButton");
+    if (clickButton != null) {
+        clickButton.addEventListener("click", handleUserInput, false);
+    }
+})
