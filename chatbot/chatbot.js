@@ -83,6 +83,7 @@ function handlingUserInput() {
     var conversationHtml = document.getElementById("conversation");
     conversationHtml.insertAdjacentHTML( 'beforeend', printUserInput(input) );
     var userKeywords = filterInput(input).split(",");
+    console.log(lastAnsweredQuestion);
     if (lastAnsweredQuestion == "") {
         for (var keyword of userKeywords) {
             switch (keyword) {
@@ -93,13 +94,16 @@ function handlingUserInput() {
             }
         }
     } 
+    console.log(lastAnsweredQuestion);
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath1[1]))
             lastAnsweredQuestion = questionsPath1[1];
+            console.log(lastAnsweredQuestion);
         case questionsPath2[0]:
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath2[1]))
             lastAnsweredQuestion = questionsPath2[1];
+            console.log(lastAnsweredQuestion);
         case questionsPath1[1]:
             var response = "";
             for (var formula of option1Keywords.answer2FormulaKeywords) {
