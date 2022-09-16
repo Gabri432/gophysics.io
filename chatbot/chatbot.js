@@ -84,6 +84,7 @@ function handlingUserInput() {
     conversationHtml.insertAdjacentHTML( 'beforeend', printUserInput(input) );
     var userKeywords = filterInput(input).split(",");
     if (lastAnsweredQuestion == "") {
+        console.log(lastAnsweredQuestion);
         for (var keyword of userKeywords) {
             switch (keyword) {
                 case searchKeyword(keyword, option1Keywords.answer1Keywords) != "":
@@ -93,6 +94,7 @@ function handlingUserInput() {
             }
         }
     } 
+    console.log(lastAnsweredQuestion);
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath1[1]))
@@ -133,6 +135,7 @@ function handlingUserInput() {
                     )
             }
     }
+    console.log(lastAnsweredQuestion);
 }
 
 window.addEventListener("DOMContentLoaded", function() {
