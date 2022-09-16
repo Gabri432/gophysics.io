@@ -84,24 +84,22 @@ function handlingUserInput() {
     conversationHtml.insertAdjacentHTML( 'beforeend', printUserInput(input) );
     var userKeywords = filterInput(input).split(",");
     if (lastAnsweredQuestion == "") {
-        console.log(lastAnsweredQuestion);
         for (var keyword of userKeywords) {
             switch (keyword) {
                 case searchKeyword(keyword, option1Keywords.answer1Keywords) != "":
-                    lastAnsweredQuestion == questionsPath1[0];
+                    lastAnsweredQuestion = questionsPath1[0];
                 case searchKeyword(keyword, option2Keywords.answer1Keywords) != "":
-                    lastAnsweredQuestion == questionsPath2[0];
+                    lastAnsweredQuestion = questionsPath2[0];
             }
         }
     } 
-    console.log(lastAnsweredQuestion);
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath1[1]))
-            lastAnsweredQuestion == questionsPath1[1];
+            lastAnsweredQuestion = questionsPath1[1];
         case questionsPath2[0]:
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath2[1]))
-            lastAnsweredQuestion == questionsPath2[1];
+            lastAnsweredQuestion = questionsPath2[1];
         case questionsPath1[1]:
             var response = "";
             for (var formula of option1Keywords.answer2FormulaKeywords) {
@@ -135,7 +133,6 @@ function handlingUserInput() {
                     )
             }
     }
-    console.log(lastAnsweredQuestion);
 }
 
 window.addEventListener("DOMContentLoaded", function() {
