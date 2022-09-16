@@ -42,7 +42,7 @@ const questionsPath2 = [
 var lastAnsweredQuestion = "";
 
 function returnBotAnswer(answer) {
-    return "<div class='bot-message'>" + answer + "</div>";
+    return "<br /><div class='bot-message'>" + answer + "</div>";
 }
 
 function redirectTo(botAnswer, link) {
@@ -78,79 +78,55 @@ function filterInput(text) {
     return userInput
 }
 
-function findKeywordsAnswer1(userKeywords) {
-    for (var keyword of userKeywords) {
-        var keywordOpt1 = searchKeyword(keyword, option1Keywords.answer1Keywords);
-        var keywordOpt2 = searchKeyword(keyword, option2Keywords.answer1Keywords);
-        if (keywordOpt1 != "") {
-            lastAnsweredQuestion = questionsPath1[0];
-            return;
-        } else if (keywordOpt2 != "") {
-            lastAnsweredQuestion = questionsPath2[0];
-            return;
-        }
-    }
-    return;
-}
-
-function findKeywordsAnswer2(userKeywords) {
-    switch (lastAnsweredQuestion) {
-        case lastAnsweredQuestion == questionsPath1[0]:
-            for (var keyword of userKeywords) {
-                var formula = searchKeyword(keyword, option1Keywords.answer2FormulaKeywords);
-                var constant = searchKeyword(keyword, option1Keywords.answer2ConstantKeywords);
-                if (formula != "") {
-                    lastAnsweredQuestion = questionsPath1[1];
-                    return formula;
-                } else if (constant != "") {
-                    lastAnsweredQuestion = questionsPath1[1];
-                    return constant;
-                } else {
-                    return "";
-                }
-            }
-        case lastAnsweredQuestion == questionsPath2[0]:
-            for (var keyword of userKeywords) {
-                var keywordOpt2 = searchKeyword(keyword, option2Keywords.answer2Keywords);
-                if (keywordOpt2 != "") {
-                    lastAnsweredQuestion = questionsPath2[1];
-                    return keywordOpt2;
-                }
-            }
-    }
-    return "";
-}
-
-function handleUserInput() {
+function handlingUserInput() {
     var input = document.getElementById("input-text").value;
     var conversationHtml = document.getElementById("conversation");
     conversationHtml.insertAdjacentHTML( 'beforeend', printUserInput(input) );
     var userKeywords = filterInput(input).split(",");
     if (lastAnsweredQuestion == "") {
-        findKeywordsAnswer1(userKeywords);
-    }
-    console.log(lastAnsweredQuestion);
-    var response = findKeywordsAnswer2(userKeywords);
-    console.log(lastAnsweredQuestion);
+        for (var keyword of userKeywords) {
+            switch (keyword) {
+                case searchKeyword(keyword, option1Keywords.answer1Keywords) != "":
+                    lastAnsweredQuestion == questionsPath1[0];
+                case searchKeyword(keyword, option2Keywords.answer1Keywords) != "":
+                    lastAnsweredQuestion == questionsPath2[0];
+            }
+        }
+    } 
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
-            conversationHtml.insertAdjacentHTML('beforeend', returnBotAnswer(questionsPath1[1]));
+            conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath1[1]))
+            lastAnsweredQuestion == questionsPath1[1];
         case questionsPath2[0]:
-            conversationHtml.insertAdjacentHTML('beforeend', returnBotAnswer(questionsPath2[1]));
+            conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath2[1]))
+            lastAnsweredQuestion == questionsPath2[1];
         case questionsPath1[1]:
-            if (response != "") {
-                redirectTo(
-                    "You will be redirected to the exact section of documentation of your interest in 3 seconds.",
-                    "https://gabri432.github.io/gophysics.io/routes/docs/docs.html#" + response
-                    )
+            var response = "";
+            for (var formula of option1Keywords.answer2FormulaKeywords) {
+                if (userKeywords.includes(formula)) {
+                    response = formula;
+                    break;
+                }
             }
+            if (response == "") {
+                for (var constant of option1Keywords.answer2ConstantKeywords) {
+                    if (userKeywords.includes(constant)) {
+                        response = constant;
+                        break;
+                    }
+                }
+            }
+            redirectTo(
+                "You will be redirected to the exact section of documentation of your interest in 3 seconds.",
+                "https://gabri432.github.io/gophysics.io/routes/docs/docs.html#" + response
+                )
         case questionsPath2[1]:
-            if (response == "website") {
+            if (userKeywords.includes("website")) {
                 redirectTo(
                     "You will be redirected to the Github page of the website in 3 seconds.",
                     "https://github.com/Gabri432/gophysics.io/issues/new"
                     )
-            } else if (response == "library") {
+            } else if (userKeywords.includes("library") || userKeywords.includes("libraries")) {
                 redirectTo(
                     "You will be redirected to the exact section of documentation of your interest in 3 seconds.",
                     "https://github.com/Gabri432/gophysics/issues/new"
@@ -162,11 +138,11 @@ function handleUserInput() {
 window.addEventListener("DOMContentLoaded", function() {
     var clickButton = document.getElementById("clickButton");
     if (clickButton != null) {
-        clickButton.addEventListener("click", handleUserInput, false);
+        clickButton.addEventListener("click", handlingUserInput, false);
         clickButton.addEventListener("keypress", function(event) {
             if (event.Key == "Enter") {
                 event.preventDefault()
-                handleUserInput()
+                handlingUserInput()
             }
         });
     }
