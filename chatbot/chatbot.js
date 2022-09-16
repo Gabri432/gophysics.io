@@ -86,11 +86,12 @@ function handlingUserInput() {
     console.log(lastAnsweredQuestion);
     if (lastAnsweredQuestion == "") {
         for (var keyword of userKeywords) {
-            switch (keyword) {
-                case searchKeyword(keyword, option1Keywords.answer1Keywords) != "":
-                    lastAnsweredQuestion = questionsPath1[0];
-                case searchKeyword(keyword, option2Keywords.answer1Keywords) != "":
-                    lastAnsweredQuestion = questionsPath2[0];
+            if (searchKeyword(keyword, option1Keywords.answer1Keywords) != "") {
+                lastAnsweredQuestion = questionsPath1[0];
+                break;
+            } else if (searchKeyword(keyword, option2Keywords.answer1Keywords) != "") {
+                lastAnsweredQuestion = questionsPath2[0];
+                break;
             }
         }
     } 
