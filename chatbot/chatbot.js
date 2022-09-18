@@ -135,7 +135,7 @@ function handlingUserInput() {
                     )
             } else if (userKeywords.includes("library") || userKeywords.includes("libraries")) {
                 redirectTo(
-                    "You will be redirected to the exact section of documentation of your interest in 3 seconds.",
+                    "You will be redirected to the Github page of the library in 3 seconds.",
                     "https://github.com/Gabri432/gophysics/issues/new"
                     )
             }
