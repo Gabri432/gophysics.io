@@ -42,7 +42,7 @@ const questionsPath2 = [
 var lastAnsweredQuestion = "";
 
 function returnBotAnswer(answer) {
-    return "<br /><div class='bot-message'>" + answer + "</div>";
+    return "<br /><br /><div class='bot-message'>" + answer + "</div>";
 }
 
 function redirectTo(botAnswer, link) {
