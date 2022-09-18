@@ -83,7 +83,6 @@ function handlingUserInput() {
     var conversationHtml = document.getElementById("conversation");
     conversationHtml.insertAdjacentHTML( 'beforeend', printUserInput(input) );
     var userKeywords = filterInput(input).split(",");
-    console.log(lastAnsweredQuestion);
     if (lastAnsweredQuestion == "") {
         for (var keyword of userKeywords) {
             if (searchKeyword(keyword, option1Keywords.answer1Keywords) != "") {
@@ -94,8 +93,7 @@ function handlingUserInput() {
                 break;
             }
         }
-    } 
-    console.log(lastAnsweredQuestion);
+    }
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath1[1]))
@@ -127,7 +125,6 @@ function handlingUserInput() {
                 )
             break;
         case questionsPath2[1]:
-            console.log("The user is specifying if it is a bug with the library or the website.");
             if (userKeywords.includes("website")) {
                 redirectTo(
                     "You will be redirected to the Github page of the website in 3 seconds.",
