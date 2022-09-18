@@ -187,7 +187,7 @@ function loadConstants() {
     sideNav.innerHTML += "<h3><a>Constants</a></h3>";
     for (var i=0; i<constantsList.length; i++) {
         documentationHtml.innerHTML += 
-        "<div class='func'><div class='function-displayer' id="+ constantsList[i].name +">" + constantsList[i].name + 
+        "<div class='func'><div class='function-displayer' id="+ constantsList[i].id +">" + constantsList[i].name + 
         "</div><br/><span class='codes'>Value: " + constantsList[i].value + " " + constantsList[i].measurementUnit + "</span></div><br />";
 
         sideNav.innerHTML += "<a href=#"+constantsList[i].id+">"+ constantsList[i].name+ "</a>";
