@@ -162,7 +162,10 @@ window.onload = () => {
     loadFormulas()
     loadConstants()
     if (window.location.hash != "") {
-        document.getElementById(location.hash).scroll();
+        var elem = document.getElementById(location.hash);
+        if (elem != null) {
+            elem.scroll();
+        }
     }
 }
 
