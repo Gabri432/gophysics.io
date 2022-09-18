@@ -98,17 +98,14 @@ function handlingUserInput() {
     console.log(lastAnsweredQuestion);
     switch (lastAnsweredQuestion) {
         case questionsPath1[0]:
-            console.log("The user needs to find a formula or constant.");
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath1[1]))
             lastAnsweredQuestion = questionsPath1[1];
-            console.log(lastAnsweredQuestion);
+            break;
         case questionsPath2[0]:
-            console.log("The user needs to report a bug or suggestion.");
             conversationHtml.insertAdjacentHTML( 'beforeend', returnBotAnswer(questionsPath2[1]))
             lastAnsweredQuestion = questionsPath2[1];
-            console.log(lastAnsweredQuestion);
+            break;
         case questionsPath1[1]:
-            console.log("The user is typing the name of the formula or constant to look for.");
             var response = "";
             for (var formula of option1Keywords.answer2FormulaKeywords) {
                 if (userKeywords.includes(formula)) {
@@ -128,6 +125,7 @@ function handlingUserInput() {
                 "You will be redirected to the exact section of documentation of your interest in 3 seconds.",
                 "https://gabri432.github.io/gophysics.io/routes/docs/docs.html#" + response
                 )
+            break;
         case questionsPath2[1]:
             console.log("The user is specifying if it is a bug with the library or the website.");
             if (userKeywords.includes("website")) {
@@ -141,6 +139,7 @@ function handlingUserInput() {
                     "https://github.com/Gabri432/gophysics/issues/new"
                     )
             }
+            break;
     }
 }
 
