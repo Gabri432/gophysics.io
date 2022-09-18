@@ -161,6 +161,9 @@ const constantsList = [absZero, airConductivity, airDensity, angstrom, atm, atom
 window.onload = () => {
     loadFormulas()
     loadConstants()
+    if (window.location.hash != "") {
+        document.getElementById(location.hash).scroll();
+    }
 }
 
 function loadFormulas() {
