@@ -162,7 +162,6 @@ window.onload = () => {
     loadFormulas()
     loadConstants()
     if (window.location.hash != "") {
-        console.log(window.location.hash);
         var elem = document.querySelector((location.hash));
         if (elem != null) {
             elem.scrollIntoView();
