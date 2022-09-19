@@ -106,12 +106,13 @@ li a {
   }
 
 #chatbot-icon {
-    background-color: HotPink;
+    background-color: #373737;
     padding: 20px;
     margin: 5px;
     position: fixed;
-    bottom: 0px;
-    right: 0px;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 100px;
 }
 
 @media only screen and (max-width: 900px){
