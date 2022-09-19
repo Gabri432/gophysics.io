@@ -165,7 +165,7 @@ window.onload = () => {
         console.log(window.location.hash);
         var elem = document.querySelector((location.hash));
         if (elem != null) {
-            elem.scroll();
+            elem.scrollIntoView();
         }
     }
 }
