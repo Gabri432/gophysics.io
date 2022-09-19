@@ -82,7 +82,7 @@ const SelfCapacitance = new Formula("SelfCapacitance (charge, potential float64)
 const SelfCapacitanceSphere = new Formula("SelfCapacitanceSphere (radius float64)", "4 * greekPi * Vacuum Premittivity constant * radius", "C/V")
 const Speed = new Formula("Speed (distance, time float64)", "distance/time", "m/s")
 const Time = new Formula("Time (distance, speed float64)", "distance/speed", "s")
-const VerticalPos = new Formula("VerticalPos(velocity, timeInSeconds, angleInDeg float64)", "velocity*timeInSeconds*Sine(angleInDeg) - (1/2)*g*(timeInSeconds^2)", "m")
+const VerticalPos = new Formula("VerticalPos (velocity, timeInSeconds, angleInDeg float64)", "velocity*timeInSeconds*Sine(angleInDeg) - (1/2)*g*(timeInSeconds^2)", "m")
 const Voltage = new Formula("Voltage (charge, distance1, distance2 float64)", "see 'ElectricPotentDiff'", "V")
 const Work = new Formula("Work (force, distance float64)", "force*distance", "J")
 
