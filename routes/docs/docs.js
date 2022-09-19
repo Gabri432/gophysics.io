@@ -163,7 +163,7 @@ window.onload = () => {
     loadConstants()
     if (window.location.hash != "") {
         console.log(window.location.hash);
-        var elem = document.getElementById(location.hash);
+        var elem = document.querySelector((location.hash));
         if (elem != null) {
             elem.scroll();
         }
