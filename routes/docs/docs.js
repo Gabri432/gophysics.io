@@ -38,8 +38,9 @@ const Force = new Formula("Force (mass, acceleration float64)", "mass*accelerati
 const Frequency = new Formula("Frequency (speed, distance float64)", "speed / distance", "hertz")
 const GaussFlux = new Formula("GaussFlux (charge float64)", "charge / Vacuum Premittivity constant", "N*m^2/C")
 const GravAttract = new Formula("GravAttract (mass1, mass2, distance float64)", "(G * mass1 * mass2) / (distance^2)", "m/s^2")
-const GravField = new Formula("GravField (mass, distance float64)", "(constants.G * mass) / (distance^2)", "m/s^2")
+const GravField = new Formula("GravField (mass, distance float64)", "(G * mass) / (distance^2)", "m/s^2")
 const HeatFlux = new Formula("HeatFlux (thermalConductivityConstant, startingTemperatureKelvin, finalTemperatureKelvin, distance float64)", "-1 * thermalConductivityConstant * (finalTemperatureKelvin - startingTemperatureKelvin) / distance", "W")
+const HorizontalPos = new Formula("HorizontalPos (velocity, timeInSeconds, angleInDeg float64)", "velocity * timeInSeconds * Cosine(angleInDeg)", "m")
 const Intensity = new Formula("Intensity (power, area float64)", "power/area", "W/m^2")
 // Making some space
 const JouleHeating = new Formula("JouleHeating (resistance, currentIntensity float64)", "resistance * (currentIntensity^2)", "W")
@@ -64,7 +65,7 @@ const PhotoElettricEffect = new Formula("PhotoElettricEffect (frequence float64)
 const PotentialElasticEner = new Formula("PotentialElasticEner (elasticConstant, distance float64)", "(1 / 2) * elasticConstant * (distance^2)", "J")
 const PotentialEner = new Formula("PotentialEner (mass, acceleration, height float64)", "mass * acceleration * height", "J")
 const PotentialGravEner = new Formula("PotentialGravEner (mass, height float64)", "mass * g * height", "J")
-const PotentialGravEner2 = new Formula("PotentialGravEner2 (mass1, mass2, distance float64)", "-1 * [(constants.G * mass1 * mass2) / (distance)]", "J")
+const PotentialGravEner2 = new Formula("PotentialGravEner2 (mass1, mass2, distance float64)", "-1 * [(G * mass1 * mass2) / (distance)]", "J")
 const Power = new Formula("Power (work, time float64)", "work / time", "W")
 // Making some space
 const Pressure = new Formula("Pressure (normalForce, area float64)", "normalForce / area", "Pascal")
@@ -81,16 +82,17 @@ const SelfCapacitance = new Formula("SelfCapacitance (charge, potential float64)
 const SelfCapacitanceSphere = new Formula("SelfCapacitanceSphere (radius float64)", "4 * greekPi * Vacuum Premittivity constant * radius", "C/V")
 const Speed = new Formula("Speed (distance, time float64)", "distance/time", "m/s")
 const Time = new Formula("Time (distance, speed float64)", "distance/speed", "s")
+const VerticalPos = new Formula("VerticalPos(velocity, timeInSeconds, angleInDeg float64)", "velocity*timeInSeconds*Sine(angleInDeg) - (1/2)*g*(timeInSeconds^2)", "m")
 const Voltage = new Formula("Voltage (charge, distance1, distance2 float64)", "see 'ElectricPotentDiff'", "V")
 const Work = new Formula("Work (force, distance float64)", "force*distance", "J")
 
 const functionsList = [Acceleration, AngularFreq, CentripetalAccel, CentripetalForce, Density, DopplerCloser, 
     DopplerFarer, ElectricField, ElectricPotentDiff, ElectricPotentEnergyDiff, EnergyDens, EnergyDensity, EscapeSpeed,
-    Force, Frequency, GaussFlux, GravAttract, GravField, HeatFlux, Intensity, LawCoulomb, LawGayLussacPressure, LawGayLussacVolume,
+    Force, Frequency, GaussFlux, GravAttract, GravField, HeatFlux, HorizontalPos, Intensity, LawCoulomb, LawGayLussacPressure, LawGayLussacVolume,
     LawHagenPoiseuille, LawOhm1, LawOhm2, LawStokes, LorentzFactor, MechanicalEner, Momentum, NeatHeatEnergyTransfer,
     NormalForce, PendulumPeriod, PhotoElettricEffect, PotentialElasticEner, PotentialEner, PotentialGravEner, PotentialGravEner2,
     Power, Pressure, ProjectileFlightTime, ProjectileMaxHeight, ProjectileMaxRange, RelativDist, RelativMass, RelativMomentum,
-    RelativTime, Resistance, Time, Voltage, Work
+    RelativTime, Resistance, Time, VerticalPos, Voltage, Work
 ]
 
 // List of all constants
