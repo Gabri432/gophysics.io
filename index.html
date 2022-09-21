@@ -23,45 +23,99 @@
         <h2 id="page-title">Welcome to the official Gophysics website!</h2>
         <div class="text">
             <p>The gophysics library provides a set of functions and constants to make Physics calculations.</p> 
-            <h3>Example</h3>
+        <!--Examples of importing the packages of the library-->
         <br />
+            <h3>Importing the 'formulas' package to access and use the Physics formulas</h3>
+        <pre>
+            <code>
+                    import (
+                    <span class="imports">
+                        "fmt"
+                        "github.com/Gabri432/gophysics/formulas"
+                    </span>
+                    )
+
+                    <span class="func">
+                    func</span> <span class="func-name">main</span>() {
+                        // Calculating and printing Force
+                    <span class="codes">
+                        fmt.Println(formulas.<span class="func-name">Force</span>(3, 4))
+                    </span>
+                    <br />
+                        // Calculating and printing Escape Speed
+                    <span class="codes">
+                        fmt.Println(formulas.<span class="func-name">EscapeSpeed</span>(20, 30))
+                    </span> 
+                        
+                    }
+            </code>
+        </pre>
+        <br />
+            <h3>Importing the 'constants' package to access and use the Physics constants</h3>
         <pre>
             <code>
                     import (
                     <span class="imports">
                         "fmt"
                         "github.com/Gabri432/gophysics/constants"
-                        "github.com/Gabri432/gophysics/formulas"
                     </span>
                     )
-    
+
                     <span class="func">
                     func</span> <span class="func-name">main</span>() {
                     <span class="codes">
-                        fmt.Println(constants.C)</span> // Write a constant
+                        fmt.Println(constants.C)</span> // Printing the speed of light
                     <span class="codes">
-                        fmt.Println(formulas.<span class="func-name">Force</span>(3, 4))</span> // Call a function
-                    
+                        fmt.Println(constants.GRAVITY)</span> // Printing Earth's g
                     }
             </code>
         </pre>
         <br />
+            <h3>Importing the 'mathem' package for using some mathematical functions and constants</h3>
+        <pre>
+            <code>
+                    import (
+                    <span class="imports">
+                        "github.com/Gabri432/gophysics/mathem"
+                    </span>
+                    )
+
+                    <span class="func">
+                    func</span> <span class="func-name">main</span>() {
+                    <span class="codes">
+                        fmt.Println(constants.Pi)</span> // Printing Pi
+                    <br />
+                        // Calculating and printing Standard Deviation
+                    <span class="codes">
+                        fmt.Println(constants.<span class="func-name">StandardDeviation</span>(2, 4, 4, 4, 5, 5, 7, 9))</span>
+                    }
+            </code>
+        </pre>
+        <br />
+        <!--Examples of using methods of the library-->
             <h3>Example of using methods</h3>
         <pre>
             <code>
+                import (
+                    <span class="imports">
+                        "github.com/Gabri432/gophysics/constants"
+                        "github.com/Gabri432/gophysics/formulas"
+                    </span>
+                )
+
                 <span class="func">
-                    func</span> <span class="func-name">main</span>() {
-                        // Create a custom object
-                    <span class="codes">
-                        myPlanet := formulas.PlanetBody{}
-                        myPlanet.Mass = constants.EARTH_MASS
-                        myPlanet.Radius = constants.EARTH_RADIUS
-                    </span>
-                        // Call object methods to ease calculations
-                    <span class="codes">
-                        fmt.Println(myPlanet.<span class="func-name">EscapeSpeed</span>())
-                    </span>
-                    }
+                func</span> <span class="func-name">main</span>() {
+                    // Create a custom object
+                <span class="codes">
+                    myPlanet := formulas.PlanetBody{}
+                    myPlanet.Mass = constants.EARTH_MASS
+                    myPlanet.Radius = constants.EARTH_RADIUS
+                </span>
+                    // Call object methods to ease calculations
+                <span class="codes">
+                    fmt.Println(myPlanet.<span class="func-name">EscapeSpeed</span>())
+                </span>
+                }
             </code>
         </pre>
         </div>
