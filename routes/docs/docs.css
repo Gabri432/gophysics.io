@@ -4,7 +4,7 @@ html {
 body {
     background-color: rgb(225, 249, 241);
     margin: 0;
-    font-family: 'Trebuchet MS', sans-serif, 'system-ui';
+    font-family: sans-serif, 'system-ui';
 }
 #header, #footer {
     background-color: #262626;
