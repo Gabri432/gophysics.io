@@ -148,7 +148,7 @@ window.addEventListener("DOMContentLoaded", function() {
     var inputText = document.getElementById("input-text");
     if (inputText != null) {
         inputText.addEventListener("keydown", function(event) {
-        if (event.Key == "Enter") {
+        if (event.key == "Enter") {
                 handlingUserInput()
             }
         });
